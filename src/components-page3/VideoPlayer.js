@@ -21,7 +21,7 @@ const video4 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2
 const video5 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/VirtualMall/Virtual_Mall.mp4";
 const video6 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/3_Employee_Experience/HROnBoarding/HR_OnBoarding.mp4";
 const video7 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/3_Employee_Experience/OneBC/OneBC_Explore.mp4";
-//const video8 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/Cipla/Cipla.mp4";
+// const video8 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/Cipla/Cipla.mp4";
 const video9 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/KBL/KBL_C.mp4";
 const video10 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/ONGC-exe/Ongc.mp4";
 const video11 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/ShivanE/KPMG_Kaleidoscope_ShivanE.mp4";
@@ -37,7 +37,7 @@ const videoMapping = {
   "5": video5,
   "6": video6,
   "7": video7,
-  //"8": video8,
+  // "8": video8,
   "9": video9,
   "10": video10,
   "11": video11,
@@ -59,6 +59,8 @@ const VideoPlayer = () => {
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(true);
+  // track if pointer is within top 20vh
+  const [isPointerTop, setIsPointerTop] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Format seconds into mm:ss
@@ -121,6 +123,13 @@ const VideoPlayer = () => {
     const newMute = !isMuted;
     setIsMuted(newMute);
     videoRef.current.muted = newMute;
+    if (newMute) {
+      setVolume(0);
+      videoRef.current.volume = 0;
+    } else {
+      setVolume(1);
+      videoRef.current.volume = 1;
+    }
   };
   const handleVolumeChange = (e) => {
     const newVolume = parseFloat(e.target.value);
@@ -141,23 +150,28 @@ const VideoPlayer = () => {
     if (hideTimer.current) clearTimeout(hideTimer.current);
     hideTimer.current = setTimeout(() => setControlsVisible(false), 5000);
   };
-  const handleMouseMove = () => resetControlsTimer();
+  // only reset timer and track hover region when mouse moves
+  const handleMouseMove = (e) => {
+    const y = e.clientY;
+    setIsPointerTop(y <= window.innerHeight * 0.2);
+    resetControlsTimer();
+  };
 
   useEffect(() => {
     resetControlsTimer();
     return () => hideTimer.current && clearTimeout(hideTimer.current);
   }, []);
 
-     // toggle play / pause on click
-      const togglePlayPause = () => {
-        if (videoRef.current.paused) {
-          videoRef.current.play();
-          setIsPlaying(true);
-        } else {
-          videoRef.current.pause();
-          setIsPlaying(false);
-        }
-      };
+  // toggle play / pause on click
+  const togglePlayPause = () => {
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <div className="video-player-container">
@@ -170,49 +184,39 @@ const VideoPlayer = () => {
           onLoadedMetadata={handleLoadedMetadata}
         />
 
-        {/* Go Back button now shows/hides with controls and preserves active card */}
+        {/* Go Back button only visible when controlsVisible && isPointerTop */}
         <Link
           to={videoCard ? `/swiper/${videoCard.page}?activeStep=${videoCard.id}` : "/"}
-          className={`go-back-button ${controlsVisible ? "visible" : "hidden"}`}
+          className={`go-back-button ${controlsVisible && isPointerTop ? "visible" : "hidden"}`}
         >
-          <span>
-            <img src={arrowIcon} alt="Go Back" />
-          </span>
+          <span><img src={arrowIcon} alt="Go Back" /></span>
           <h2>Go Back</h2>
         </Link>
 
         {/* Controls Overlay */}
-        <div className={`controls-overlay ${controlsVisible ? "visible" : "hidden"}`}
-            onMouseEnter={() => {
-               // stop the hide timer as soon as we hover the overlay
-                if (hideTimer.current) clearTimeout(hideTimer.current);
-                setControlsVisible(true);
-                }}
-                onMouseLeave={resetControlsTimer}>
-            <input
-                type="range"
-                className="progress-slider"
-                value={currentTime}
-                min="0"
-                max={duration}
-                step="0.1"
-                onChange={handleProgressChange}
-                style={sliderStyle}
-            />
-
+        <div
+          className={`controls-overlay ${controlsVisible ? "visible" : "hidden"}`}
+          onMouseEnter={() => { if (hideTimer.current) clearTimeout(hideTimer.current); setControlsVisible(true); }}
+          onMouseLeave={resetControlsTimer}
+        >
+          <input
+            type="range"
+            className="progress-slider"
+            value={currentTime}
+            min="0"
+            max={duration}
+            step="0.1"
+            onChange={handleProgressChange}
+            style={sliderStyle}
+          />
           <div className="controls-buttons">
             <div className="controls-left">
               <button onClick={isPlaying ? handlePause : handlePlay}>
                 {isPlaying ? <FaPause /> : <FaPlay />}
               </button>
-              <span className="time-display">
-                {formatTime(currentTime)} / {formatTime(duration)}
-              </span>
-              <div className="volume-control"   
-                onMouseEnter={() => hideTimer.current && clearTimeout(hideTimer.current)} onMouseLeave={resetControlsTimer}>
-                <button onClick={toggleMute}>
-                  {isMuted || volume === 0 ? <FaVolumeMute /> : <FaVolumeUp />}
-                </button>
+              <span className="time-display">{formatTime(currentTime)} / {formatTime(duration)}</span>
+              <div className="volume-control" onMouseEnter={() => { if (hideTimer.current) clearTimeout(hideTimer.current); }} onMouseLeave={resetControlsTimer}>
+                <button onClick={toggleMute}>{isMuted || volume === 0 ? <FaVolumeMute /> : <FaVolumeUp />}</button>
                 <input
                   type="range"
                   min="0"
@@ -225,11 +229,8 @@ const VideoPlayer = () => {
                 />
               </div>
             </div>
-
             <div className="controls-right">
-              <button onClick={handleFullScreen}>
-                <FaExpand />
-              </button>
+              <button onClick={handleFullScreen}><FaExpand /></button>
             </div>
           </div>
         </div>
