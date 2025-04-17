@@ -355,7 +355,7 @@ const cards = [
       //swiper115,
       //swiper116,
     ],
-    useCase: "Innovation Centre",
+    useCase: "Virtual Innovation Centre",
     useCaseDesc: "A realistic, navigable 3D environment designed to showcase innovation through immersive digital replicas or custom-built spaces. Features AI-enabled avatar assistance, configurable architecture, and dedicated zones for collaboration, partnership engagement, and solution exploration. Includes sandbox environments for experimentation and a digital library for on-demand content access. Fully customizable to align with strategic goals and stakeholder experiences.",
     useCaseVideo: "/video/1",
     // features: [
@@ -390,7 +390,7 @@ const cards = [
       swiper205,
       swiper206,
     ],
-    useCase: "Lighthouse",
+    useCase: "Digital Showcase",
     useCaseDesc: "A high-impact 3D environment built for presenting brand stories, innovations, and key messages through immersive design. Features multiple interactive screens to display presentations, videos, and strategic highlights in a visually compelling format. Ideal for executive briefings, product demos, and stakeholder engagement. Customizable to reflect brand identity and messaging priorities.",
     useCaseVideo: "/video/2",
     // features: [
@@ -440,7 +440,7 @@ const cards = [
       //swiper320,
       //swiper321,
     ],
-    useCase: "Experience Store",
+    useCase: "Virtual Experience Store",
     useCaseDesc: "An interactive 3D retail environment that mirrors the functionality and feel of a physical store, enabling users to explore and engage with animated product simulations. Realistic digital assets demonstrate features in action, enhancing product understanding and decision-making. AI-powered avatars provide personalized assistance and respond to user queries in real time. Designed to elevate digital retail experiences through lifelike engagement and intelligent support.",
     useCaseVideo: "/video/3",
     // features: [
@@ -484,7 +484,7 @@ const cards = [
       //swiper414,
       //swiper415,
     ],
-    useCase: "Service Center",
+    useCase: "Virtual Customer Service Center",
     useCaseDesc: "A comprehensive 3D support platform reimagined with digital humanoid avatars that guide and assist users through categorized services such as general queries, service appointment booking, installation, and more. Voice-enabled and simulation-driven for intuitive, self-service experiences. Includes tools like store locators and product highlight zones to streamline assistance and engagement. Built to deliver responsive, intelligent support in an immersive virtual setting.",
     useCaseVideo: "/video/4",
     // features: [
@@ -505,7 +505,7 @@ const cards = [
     //   }
     // ]
   },
-  {
+  /*{
     id: 5,
     page: "2",
     title: "Customer Engagement",
@@ -539,7 +539,7 @@ const cards = [
     //     text: "Description for feature three."
     //   }
     // ]
-  },
+  },*/
   {
     id: 6,
     page: "3",
@@ -558,7 +558,7 @@ const cards = [
       //swiper609,
       //swiper610,
     ],
-    useCase: "HR Onboarding",
+    useCase: "HR Onboarding Platform",
     useCaseDesc: "A reimagined onboarding experience delivered through an interactive 3D environment, guided by digital humanoid avatars. New employees are introduced to company values, policies, and culture through immersive journeys and realistic office space replicas. Includes social hubs and community zones to foster early connection and belonging. Designed to make onboarding engaging, intuitive, and memorable from day one.",
     useCaseVideo: "/video/6",
     // features: [
@@ -592,7 +592,7 @@ const cards = [
       swiper704,
       swiper705,
     ],
-    useCase: "OneBC",
+    useCase: "Internal Networking Platform",
     useCaseDesc: "An internal networking platform designed to foster meaningful connections across teams and departments. Enables employees to connect, chat, and collaborate based on shared interests, roles, or projects. Features intuitive swipe-based UX, smart filters, and personalized suggestions to enhance engagement. Built to strengthen culture, communication, and cross-functional collaboration within the organization.",
     useCaseVideo: "/video/7",
     // features: [
@@ -613,7 +613,7 @@ const cards = [
     //   }
     // ]
   },
-  {
+  /*{
     id: 8,
     page: "4",
     title: "Knowledge Management",
@@ -644,7 +644,7 @@ const cards = [
     //     text: "Description for feature three."
     //   }
     // ]
-  },
+  }*/,
   {
     id: 9,
     page: "4",
@@ -663,7 +663,7 @@ const cards = [
       //swiper909,
       //swiper910,
     ],
-    useCase: "KBL",
+    useCase: "Business Query and Insights Assistant",
     useCaseDesc: "An interactive 2D web-based assistant modeled on generative AI capabilities, tailored for domain-specific use—such as retail, with flexibility to adapt across industries. Enables users to chat about products, analyze reports, access insights, and explore data through intuitive conversations. Features include smart query suggestions, contextual visuals, graph generation, and follow-up interactions. Built for deep customization, knowledge integration, and seamless knowledge capture through saved conversations and downloadable notes.",
     useCaseVideo: "/video/9",
     // features: [
@@ -695,7 +695,7 @@ const cards = [
       swiper1002,
       swiper1003,
     ],
-    useCase: "ONGC",
+    useCase: "AI-Powered Parliamentary Query Assistant",
     useCaseDesc: "A specialized AI platform featuring a digital avatar embedded with generative AI, trained on organization-specific data. Designed to retrieve, analyze, and respond to parliamentary questions with accuracy and speed. Provides detailed, reference-backed answers to support transparency, compliance, and informed decision-making. Tailored for high-stakes information environments where precision and credibility are critical.",
     useCaseVideo: "/video/10",
     // features: [
@@ -730,7 +730,7 @@ const cards = [
       swiper1105,
       swiper1106,
     ],
-    useCase: "ShivanE",
+    useCase: "Realistic 3D AI Assistant ",
     useCaseDesc: "A visually rich 3D environment featuring a high-fidelity humanoid avatar powered by generative AI and tailored organizational data. Responds with natural animations, expressions, and gestures to deliver information in an engaging, intuitive manner. Designed to enhance user interaction with a balance of realism, intelligence, and immersive communication.",
     useCaseVideo: "/video/11",
     // features: [
@@ -768,7 +768,7 @@ const cards = [
       //swiper1208,
       //swiper1209,
     ],
-    useCase: "CPCL",
+    useCase: "VR-Based Industrial Training Simulator",
     useCaseDesc: "A web-based learning solution offering step-by-step guided exploration of complex systems such as solar and wind farms through interactive 3D modules. Users can assemble components, experience real-time environmental simulations, and understand operational workflows in a hands-on format. Integrated AI chatbots provide contextual assistance and curated content, while digital twin integration enables real-time learning and scenario-based insights. Designed to enhance system familiarization through active, experiential learning.",
     useCaseVideo: "/video/12",
     // features: [
@@ -811,7 +811,7 @@ const cards = [
       //swiper1313,
       //swiper1314,
     ],
-    useCase: "ReLearn",
+    useCase: "Interactive Learning Explorer Platform",
     useCaseDesc: "A web-based learning solution offering step-by-step guided exploration of complex systems such as solar and wind farms through interactive 3D modules. Users can assemble components, experience real-time environmental simulations, and understand operational workflows in a hands-on format. Integrated AI chatbots provide contextual assistance and curated content, while digital twin integration enables real-time learning and scenario-based insights. Designed to enhance system familiarization through active, experiential learning.",
     useCaseVideo: "/video/13",
     // features: [
@@ -832,7 +832,7 @@ const cards = [
     //   }
     // ]
   },
-  {
+  /*{
     id: 14,
     page: "5",
     title: "Learning and Development",
@@ -868,7 +868,7 @@ const cards = [
     //     text: "Description for feature three."
     //   }
     // ]
-  },
+  },*/
 ];
 
 export default cards;

@@ -119,15 +119,17 @@
   }
   .controls-left,
   .controls-right {
+    margin: 0 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   .controls-overlay button {
     background: none;
     border: none;
     color: #fff;
     font-size: 1.5vw;
-    margin: 0 20px;
+    margin: 0 15px;
     cursor: pointer;
     transition: transform 0.2s ease, color 0.2s ease;
   }

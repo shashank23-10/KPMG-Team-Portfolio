@@ -148,9 +148,20 @@ const VideoPlayer = () => {
     return () => hideTimer.current && clearTimeout(hideTimer.current);
   }, []);
 
+     // toggle play / pause on click
+      const togglePlayPause = () => {
+        if (videoRef.current.paused) {
+          videoRef.current.play();
+          setIsPlaying(true);
+        } else {
+          videoRef.current.pause();
+          setIsPlaying(false);
+        }
+      };
+
   return (
     <div className="video-player-container">
-      <div className="video-wrapper" onMouseMove={handleMouseMove}>
+      <div className="video-wrapper" onMouseMove={handleMouseMove} onClick={togglePlayPause}>
         <video
           ref={videoRef}
           src={videoSrc}
@@ -171,27 +182,34 @@ const VideoPlayer = () => {
         </Link>
 
         {/* Controls Overlay */}
-        <div className={`controls-overlay ${controlsVisible ? "visible" : "hidden"}`}>
-          <input
-            type="range"
-            className="progress-slider"
-            value={currentTime}
-            min="0"
-            max={duration}
-            step="0.1"
-            onChange={handleProgressChange}
-            style={sliderStyle}
-          />
+        <div className={`controls-overlay ${controlsVisible ? "visible" : "hidden"}`}
+            onMouseEnter={() => {
+               // stop the hide timer as soon as we hover the overlay
+                if (hideTimer.current) clearTimeout(hideTimer.current);
+                setControlsVisible(true);
+                }}
+                onMouseLeave={resetControlsTimer}>
+            <input
+                type="range"
+                className="progress-slider"
+                value={currentTime}
+                min="0"
+                max={duration}
+                step="0.1"
+                onChange={handleProgressChange}
+                style={sliderStyle}
+            />
 
           <div className="controls-buttons">
             <div className="controls-left">
               <button onClick={isPlaying ? handlePause : handlePlay}>
                 {isPlaying ? <FaPause /> : <FaPlay />}
               </button>
-              <button onClick={handleStop}>
-                <FaStop />
-              </button>
-              <div className="volume-control">
+              <span className="time-display">
+                {formatTime(currentTime)} / {formatTime(duration)}
+              </span>
+              <div className="volume-control"   
+                onMouseEnter={() => hideTimer.current && clearTimeout(hideTimer.current)} onMouseLeave={resetControlsTimer}>
                 <button onClick={toggleMute}>
                   {isMuted || volume === 0 ? <FaVolumeMute /> : <FaVolumeUp />}
                 </button>
@@ -209,9 +227,6 @@ const VideoPlayer = () => {
             </div>
 
             <div className="controls-right">
-              <span className="time-display">
-                {formatTime(currentTime)} / {formatTime(duration)}
-              </span>
               <button onClick={handleFullScreen}>
                 <FaExpand />
               </button>

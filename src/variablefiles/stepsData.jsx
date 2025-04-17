@@ -73,13 +73,13 @@ const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfoli
                     id:"1",
                     href:"innovation-centre",
                     image: project11,
-                    title: "Innovation Centre",
+                    title: "Virtual Innovation Center",
                 },
                 {
                     id:"2",
                     href:"lighthouse",
                     image: project12,
-                    title: "Lighthouse",
+                    title: "Digital Showcase",
                 },
             ]
     },
@@ -100,20 +100,20 @@ const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfoli
                 id:"3",
                 href:"experience-store",
                 image: project21,
-                title: "Experience Store",
+                title: "Virtual Experience Store",
             },
             {
                 id:"4",
                 href:"service-center",
                 image: project22,
-                title: "Service Center",
+                title: "Virtual Customer Service Center",
             },
-            {
+            /*{
                 id:"5",
                 href:"virtual-mall",
                 image: project23,
                 title: "Virtual Mall",
-            },
+            },*/
         ]
     },
     {
@@ -133,13 +133,13 @@ const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfoli
                 id:"6",
                 href:"hr-onboarding",
                 image: project31,
-                title: "HR Onboarding",
+                title: "HR Onboarding Platform",
             },
             {
                 id:"7",
                 href:"oneBC",
                 image: project32,
-                title: "OneBC",
+                title: "Internal Networking Platform",
             },
         ]
     },
@@ -156,29 +156,29 @@ const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfoli
         imageUrlMiddleTop: slider2,
         imageUrlMiddleBottom: slider2,
         projects: [
-            {
+            /*{
                 id:"8",
                 href:"cipla",
                 image: project41,
                 title: "Cipla",
-            },
+            },*/
             {
                 id:"9",
                 href:"kbl",
                 image: project42,
-                title: "KBL",
+                title: "Business Query and Insights Assistant",
             },
             {
                 id:"10",
                 href:"ongc",
                 image: project43,
-                title: "ONGC",
+                title: "AI-Powered Parliamentary Query Assistant",
             },
             {
                 id:"11",
                 href:"shivanE",
                 image: project44,
-                title: "ShivanE",
+                title: "Realistic 3D AI Assistant",
             },
         ]
     },
@@ -199,20 +199,20 @@ const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfoli
                 id:"12",
                 href:"cpcl",
                 image: project51,
-                title: "CPCL",
+                title: "VR-Based Industrial Training Simulator",
             },
             {
                 id:"13",
                 href:"relearn",
                 image: project52,
-                title: "ReLearn",
+                title: "Interactive Learning Explorer Platform",
             },
-            {
+            /*{
                 id:"14",
                 href:"shell",
                 image: project53,
                 title: "Shell",
-            },
+            },*/
         ]
     },
     ];
