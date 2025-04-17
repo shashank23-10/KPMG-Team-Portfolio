@@ -373,6 +373,18 @@ body.swiper-page {
   color: white;
 }
 
+/* Only non‑disabled buttons get hover feedback */
+.live-btn:not(.disabled):hover {
+  filter: brightness(1.1);
+  cursor: pointer;
+}
+
+/* Disabled state: greyed out & no pointer */
+.live-btn.disabled {
+  filter: grayscale(70%);
+  cursor: not-allowed;
+}
+
 /* Revised Go Back Button Styles */
 .go-back-btn {
   display: inline-flex;

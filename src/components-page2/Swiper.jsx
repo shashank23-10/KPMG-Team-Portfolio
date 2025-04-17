@@ -156,9 +156,23 @@ function Swiper() {
                       <a href={card.useCaseVideo}>
                         <button className="demo-btn">Watch Demo</button>
                       </a>
-                      <a href="/">
-                        <button className="live-btn">Experience it Live</button>
-                      </a>
+                        {card.liveDemoLink ? (
+                            // enabled
+                            <a
+                              href={card.liveDemoLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <button className="live-btn">Experience it Live</button>
+                            </a>
+                          ) : (
+                            // disabled
+                            <a>
+                            <button className="live-btn disabled" disabled>
+                              Experience it Live
+                            </button>
+                            </a>
+                          )}
                     </div>
                   </div>
                 </div>

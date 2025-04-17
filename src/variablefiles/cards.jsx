@@ -355,6 +355,7 @@ const cards = [
       //swiper115,
       //swiper116,
     ],
+    liveDemoLink: "https://alpha.example.com/",
     useCase: "Virtual Innovation Centre",
     useCaseDesc: "A realistic, navigable 3D environment designed to showcase innovation through immersive digital replicas or custom-built spaces. Features AI-enabled avatar assistance, configurable architecture, and dedicated zones for collaboration, partnership engagement, and solution exploration. Includes sandbox environments for experimentation and a digital library for on-demand content access. Fully customizable to align with strategic goals and stakeholder experiences.",
     useCaseVideo: "/video/1",
