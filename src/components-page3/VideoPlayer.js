@@ -159,9 +159,9 @@ const VideoPlayer = () => {
           onLoadedMetadata={handleLoadedMetadata}
         />
 
-        {/* Go Back button now shows/hides with controls */}
+        {/* Go Back button now shows/hides with controls and preserves active card */}
         <Link
-          to={videoCard ? `/swiper/${videoCard.page}` : "/"}
+          to={videoCard ? `/swiper/${videoCard.page}?activeStep=${videoCard.id}` : "/"}
           className={`go-back-button ${controlsVisible ? "visible" : "hidden"}`}
         >
           <span>

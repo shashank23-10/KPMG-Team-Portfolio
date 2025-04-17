@@ -1,27 +1,26 @@
+// src/components/Swiper.jsx
 import React, { useState, useRef, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom'; // Import Link here
+import { useParams, Link, useLocation } from 'react-router-dom';
 import './Swiper.css';
 import cards from '../variablefiles/cards.jsx';
 import { FaArrowLeftLong } from "react-icons/fa6";
 
 function Swiper() {
   const { pageId } = useParams();
+  const { search } = useLocation();
 
   // Filter the cards based on the URL parameter using custom property "page"
   const filteredCards = cards.filter(card => String(card.page) === pageId);
-  
-  // Use the filtered cards if any are found; otherwise, fallback to showing all cards
   const cardsToShow = filteredCards.length > 0 ? filteredCards : cards;
   const n = cardsToShow.length;
 
-  useEffect(() => {
-    document.body.className = 'swiper-page';
-    return () => {
-      document.body.className = '';
-    };
-  }, []);
+  // Read “activeStep” from the URL so we can jump back to that card
+  const activeStep = new URLSearchParams(search).get('activeStep');
+  const initialIndex = cardsToShow.findIndex(c => c.id.toString() === activeStep);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(
+    initialIndex >= 0 ? initialIndex : 0
+  );
   const [disableTransition, setDisableTransition] = useState(false);
   const prevIndexRef = useRef(0);
 
@@ -97,9 +96,16 @@ function Swiper() {
     }
   }, [disableTransition]);
 
+  useEffect(() => {
+    document.body.className = 'swiper-page';
+    return () => {
+      document.body.className = '';
+    };
+  }, []);
+
   return (
     <div className="swiper-container">
-      {/* Updated Go Back Button: Passing current pageId as query parameter */}
+      {/* Go Back Button */}
       <Link to={`/?activeStep=${pageId}`} className='go-back-btn'>
         <span className="arrow"><FaArrowLeftLong /></span>
         <span className="text">Explore other solutions</span>
@@ -117,12 +123,9 @@ function Swiper() {
       <div className="cards-container">
         {cardsToShow.map((card, index) => {
           const offset = getOffset(index);
-          // Use the images array for the active card if available; otherwise fall back to card.image
           const imgSrc = (offset === 0 && card.images && card.images.length > 0)
                           ? card.images[slideshowIndex]
                           : card.image;
-          
-          // Only add the "zoom" class for the active card 
           const imgClass = (offset === 0 && isHovered && card.images && card.images.length > 1)
                           ? "zoom"
                           : "";
@@ -137,7 +140,6 @@ function Swiper() {
                   ? 'none'
                   : 'transform 0.7s ease, opacity 0.7s ease',
               }}
-              // Attach hover events only to the active card (offset === 0)
               onMouseEnter={offset === 0 ? () => setIsHovered(true) : undefined}
               onMouseLeave={offset === 0 ? () => setIsHovered(false) : undefined}
             >
@@ -148,16 +150,16 @@ function Swiper() {
               {offset === 0 && (
                 <div className="inner-swiper-container">
                   <div className="left-column-swiper-container">
-                      <h2 className="usecase-title">{card.useCase}</h2>
-                      <p className="usecase-description">{card.useCaseDesc}</p>
-                      <div className="usecase-buttons">
-                        <a href={card.useCaseVideo}>
-                          <button className="demo-btn">Watch Demo</button>
-                        </a>
-                        <a href="/">
-                          <button className="live-btn">Experience it Live</button>
-                        </a>
-                      </div>
+                    <h2 className="usecase-title">{card.useCase}</h2>
+                    <p className="usecase-description">{card.useCaseDesc}</p>
+                    <div className="usecase-buttons">
+                      <a href={card.useCaseVideo}>
+                        <button className="demo-btn">Watch Demo</button>
+                      </a>
+                      <a href="/">
+                        <button className="live-btn">Experience it Live</button>
+                      </a>
+                    </div>
                   </div>
                 </div>
               )}
@@ -165,7 +167,7 @@ function Swiper() {
           );
         })}
 
-        {/* Global overlay over the cards container */}
+        {/* Global overlay */}
         <div className="card-overlay">
           <h1 className="card-overlay-title">
             {cardsToShow[currentIndex].title}
