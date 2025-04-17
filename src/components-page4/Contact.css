@@ -1,0 +1,103 @@
+/*****************************************
+* Base styling
+*****************************************/
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: Arial, sans-serif;
+color: #333;
+}
+
+/*****************************************
+* Container for everything
+*****************************************/
+.landing-page {
+display: flex;
+flex-direction: column;
+min-height: 100vh; /* ensures footer stays at bottom if content is short */
+}
+
+/*****************************************
+* Hero Section
+*****************************************/
+.hero-section {
+position: relative;
+height: 70vh; /* adjust as needed */
+/* background: url("/") center center / cover no-repeat; */
+}
+
+/* A semi-transparent overlay so text is more visible on top of the background. */
+.overlay {
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+background: rgba(43, 36, 96, 0.5); /* Purple-ish overlay, adjust as needed */
+}
+
+.hero-content {
+position: relative; /* Must have relative positioning to sit above overlay */
+z-index: 1;         /* Ensures text stays above the overlay */
+color: #fff;
+text-align: center;
+top: 50%;
+transform: translateY(-50%);
+}
+
+/*****************************************
+* Footer
+*****************************************/
+.footer {
+background-color: #012169; /* Example dark blue; change as needed */
+color: #fff;
+margin-top: auto; /* ensures footer sticks to the bottom if content is short */
+padding: 20px;
+}
+
+/* Top row with multiple columns */
+.footer-top {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin-bottom: 20px;
+}
+
+/* Each column of the footer */
+.footer-top ul {
+list-style: none;
+margin: 10px 0;
+padding: 0;
+}
+
+/* Links in each column */
+.footer-top li {
+margin: 5px 0;
+}
+
+/* Style the anchor tags */
+.footer-top a {
+color: #fff;
+text-decoration: none;
+}
+.footer-top a:hover {
+text-decoration: underline;
+}
+
+/* Bottom row (copyright, social icons, etc.) */
+.footer-bottom {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.linkedin-icon {
+width: 24px;
+height: 24px;
+margin-left: 10px;
+/* You can adjust size and spacing to your liking. */
+}

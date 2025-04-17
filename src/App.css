@@ -1,0 +1,94 @@
+
+/* ROOT */
+:root {
+  /* Primary KPMG Colors */
+  --color-kpmg-blue: rgb(0,51,141);
+  --color-cobalt-blue: rgb(30,73,226);
+  --color-dark-blue: rgb(12,35,60);
+  --color-light-blue: rgb(172,234,255);
+  --color-pacific-blue: rgb(0,184,245);
+  --color-purple: rgb(114, 19, 234);
+  --color-pink: rgb(253, 52, 156);
+
+    /* Neutrals for infographics */
+    --color-grey1: rgb(51,51,51);
+    --color-grey2: rgb(102,102,102);
+    --color-grey3: rgb(152,152,152);
+    --color-grey4: rgb(178, 178, 178);
+    --color-grey5: rgb(229,229,229);
+    --color-white: rgb(255,255,255);
+
+  /* Light Theme */
+  --light-bg: #f4f4f4;
+  --light-text: #222;
+
+  /* Dark Theme */
+  --dark-bg: #0a0a0a;
+  --dark-text: #fff;
+
+  /* Fonts */
+  --font-main: 'Poppins', sans-serif;
+
+  /* Spacing */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+}
+
+
+body {
+  overflow-x: hidden;
+}
+/* Entire scrollbar area */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* scroll-track */
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+/* scroll handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-kpmg-blue);
+  border-radius: 10px;
+  border: 2px solid #1a1a1a;
+}
+
+/* hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a84de0, #7c1deb);
+}
+
+/* src/App.css */
+
+/* Container for the video and overlay content */
+.app-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Full-screen background video */
+.background-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Overlay content (everything above the video) */
+.overlay-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100%;
+}

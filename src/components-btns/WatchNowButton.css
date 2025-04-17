@@ -1,0 +1,83 @@
+/* 
+  The button starts as a circle with a conic gradient (half blue, half pink). 
+  When hovered, it expands horizontally into a pill shape and reveals the text.
+*/
+
+.watch-now-button {
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    /* Initial circle shape */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  
+    /* Background & border */
+    background: conic-gradient(
+      from 180deg,
+      #4e70f0 0deg,
+      #4e70f0 180deg,
+      #c240c0 180deg,
+      #c240c0 360deg
+    );
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  
+    /* Misc */
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  
+    /* Smooth shape transition */
+    transition: width 0.4s, border-radius 0.4s;
+  }
+  
+  /* 
+    The play icon is a simple CSS triangle.
+    Feel free to replace this with an <img> or inline SVG if you prefer.
+  */
+  .play-icon {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 14px solid white;
+  
+    /* We’ll shift this right on hover to make room for text */
+    margin-right: 0;
+    transition: margin-right 0.4s;
+  }
+  
+  /* The text is hidden by default */
+  .button-text {
+    /* Prevent text from showing initially */
+    opacity: 0;
+    width: 0;
+    margin-left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  
+    /* Animate these properties when hovered */
+    transition: width 0.4s, opacity 0.4s, margin-left 0.4s;
+  }
+  
+  /* On hover, expand the button into a pill shape */
+  .watch-now-button:hover {
+    width: 160px;
+    border-radius: 30px;
+  }
+  
+  /* Move the play icon slightly left to make room for text */
+  .watch-now-button:hover .play-icon {
+    margin-right: 8px;
+  }
+  
+  /* Reveal and slide in the text */
+  .watch-now-button:hover .button-text {
+    width: auto;       /* or set a specific width like 60px if you prefer a fixed size */
+    opacity: 1;
+    margin-left: 4px;
+  }
+  

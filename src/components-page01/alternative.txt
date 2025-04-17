@@ -1,0 +1,585 @@
+// this can be used to restore just in case we don't want the SCALE UP AND SCALE DOWN vala issue 
+
+// Alternative to Timeline.css
+
+html.innovation-page,
+body.innovation-page {
+margin: 0;
+padding: 0;
+font-family: 'Gothic A1', sans-serif;
+background: #f5f7fa; /* background while video loads */
+overflow: hidden;
+}
+
+.innovation-container {
+width: 100%;
+height: 90vh;
+position: relative;
+overflow: hidden;
+}
+
+.main-content {
+width: 90%;
+height: 90%;
+position: absolute;
+top: 5%;
+left: 5%;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 2;
+}
+
+/* Left panel: vertical text + Solutions list */
+.left-panel {
+width: 25%;
+height: 100%;
+position: relative;
+white-space: nowrap;       /* Prevents text wrapping */
+overflow: visible;         /* Allows content to overflow into next div */
+z-index: 2;                /* Ensure it appears above center panel */
+}
+
+.vertical-title-left {
+writing-mode: vertical-rl;
+transform: rotate(180deg);
+position: absolute;
+top: 0;
+left: -25px;
+font-weight: 700;
+font-size: 32px;
+color: #003087;
+letter-spacing: 8px;
+}
+
+.vertical-title-left img {
+margin-top: 8px;
+transform: rotate(180deg);
+}
+
+.solutions-list {
+list-style-type: none;
+margin: 0;
+padding-left: 6px; 
+position: absolute;
+top: 5%;
+left: 12.5%;
+height: 45%;
+}
+
+.solutions-list::before {
+content: '';
+position: absolute;
+top: 0;
+left: -20px;
+width: 2px;
+height: 100%;
+background: linear-gradient(to bottom, #6361610D 5%, #222222 50%, #6361610D 95%);
+border-radius: 2px;
+}
+
+@keyframes fadeInFromLeft {
+0% {
+opacity: 0;
+transform: translateX(-20px);
+}
+100% {
+opacity: 1;
+transform: translateX(0);
+}
+}
+
+.solutions-list li {
+margin-bottom: 2.6rem;
+font-size: 24px;
+font-weight: 500;
+color: #777;
+cursor: pointer;
+opacity: 0; /* Start invisible */
+transform: translateX(-30px); /* Start shifted */
+animation: fadeInFromLeft 5s ease-in-out forwards;
+will-change: opacity, transform;
+}
+
+.solutions-list li .solution-icon {
+width: 30px;
+height: 30px;
+vertical-align: middle;
+color: inherit; /* Inherits from the li's color */
+transition: color 0.3s ease-in-out;
+margin-right: 18px;
+}
+
+/* Active state styling */
+.solutions-list li.active {
+font-size: 36px;
+font-weight: 800;
+color: #003087;
+}
+
+/* Ensure icon matches active text color */
+.solutions-list li.active .solution-icon {
+color: #003087;
+}
+
+/* Hover state styling */
+.solutions-list li:hover {
+color: #01348e;
+}
+
+/* Ensure icon matches hover text color */
+.solutions-list li:hover .solution-icon {
+color: #01348e;
+}
+
+/* Existing styling for the description box */
+.left-description {
+position: absolute;
+font-style: italic;
+display: flex;
+align-items: center;
+left: 15px;
+top: 825px;
+width: 600px;
+height: 125.81px;
+font-size: 24px;
+color: #003087;
+line-height: 1.5;
+padding: 0.5rem;
+border-radius: 20px;
+}
+
+/* Keyframe for fading out the entire box */
+@keyframes fadeOut {
+from {
+opacity: 1;
+}
+to {
+opacity: 0;
+}
+}
+
+/* Keyframe for fading in the entire box */
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+
+/* Apply fade animations to the full description box */
+.fade-out {
+animation: fadeOut 1.5s ease-in-out forwards;
+z-index: 1;  /* Ensure old box is below new box if they overlap */
+}
+
+.fade-in {
+animation: fadeIn 1.5s ease-in-out forwards;
+z-index: 2;
+}
+
+/* Center panel: images */
+.center-panel {
+width: 50%;
+height: 100%;
+position: relative;
+display: flex;
+top: 75px;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.center-top {
+width: 100%;
+height: 70%;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.center-building-img {
+height: 100%;
+width: auto;
+object-fit: cover;
+transition: all 0.4s ease-in-out;
+position: absolute;
+top: 44%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.img-wrapper.static {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 100%;
+height: 100%;
+}
+
+/* For animated wrappers, position them similarly */
+.img-wrapper {
+position: absolute;
+width: 100%;
+height: 100%;
+}
+
+/* Forward transitions: Animate only in the X direction */
+@keyframes slideOutLeft {
+from {
+transform: translateX(0);
+opacity: 1;
+}
+to {
+transform: translateX(-100%);
+opacity: 0;
+}
+}
+.slide-out-left {
+animation: slideOutLeft 1.5s ease-in-out forwards;
+}
+
+@keyframes slideInRight {
+from {
+transform: translateX(100%);
+opacity: 0;
+}
+to {
+transform: translateX(0);
+opacity: 1;
+}
+}
+.slide-in-right {
+animation: slideInRight 1.5s ease-in-out forwards;
+}
+
+/* Backward transitions: Animate only in the X direction */
+@keyframes slideOutRight {
+from {
+transform: translateX(0);
+opacity: 1;
+}
+to {
+transform: translateX(100%);
+opacity: 0;
+}
+}
+.slide-out-right {
+animation: slideOutRight 1.5s ease-in-out forwards;
+}
+
+@keyframes slideInLeft {
+from {
+transform: translateX(-100%);
+opacity: 0;
+}
+to {
+transform: translateX(0);
+opacity: 1;
+}
+}
+.slide-in-left {
+animation: slideInLeft 1.5s ease-in-out forwards;
+}
+
+.step-0 {
+margin-top:-35px; 
+margin-left: -25px;
+scale: 0.9;
+}
+
+.step-1 {
+scale: 0.9; 
+margin-top: -35px;
+margin-left: -25px;
+}
+
+.step-2 {
+margin-top: -35px;
+margin-left: -25px; 
+scale: 0.9;
+}
+
+.step-3 {
+margin-top: -35px;
+margin-left: -25px; 
+scale: 0.9;
+}
+
+.step-4 {
+margin-top: -35px;
+margin-left: -25px; 
+scale: 0.9;
+}
+
+/* Right panel: vertical text + Projects */
+.right-panel {
+width: 25%;
+height: 100%;
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: space-between; 
+align-items: flex-end;
+padding: 1rem;
+}
+
+.vertical-title-right {
+writing-mode: vertical-rl;
+position: absolute;
+top: 0%;
+right: 0%;
+font-weight: 700;
+font-size: 32px;
+color: #003087;
+padding-left: 16px;
+letter-spacing: 8px;
+height: 80%;
+}
+
+.vertical-title-right img {
+margin-bottom: 8px;
+}
+
+.vertical-title-right::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 3px;
+height: 100%;
+background: linear-gradient(to bottom, #6361610D 5%, #222222 50%, #6361610D 95%);
+border-radius: 2px;
+}
+
+@keyframes fadeInFromRight {
+0% {
+opacity: 0;
+transform: translateX(20px); /* Starts right */
+}
+100% {
+opacity: 1;
+transform: translateX(0); /* End original position */
+}
+}
+
+.projects-list {
+position: absolute;
+top: 5%;
+list-style: none;
+padding: 0;
+margin: 0 80px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+/* Default visible state */
+opacity: 1;
+transform: translateX(20px);
+}
+
+/* New animation classes for projects-list */
+.projects-list.enter {
+animation: slideInFromRight 0.6s ease-in-out forwards;
+}
+
+.projects-list.exit {
+animation: slideOutToLeft 0.6s ease-in-out forwards;
+}
+
+/* New keyframes for projects-list animations */
+@keyframes slideInFromRight {
+from {
+transform: translateX(10px);
+opacity: 0;
+}
+to {
+transform: translateX(20px);
+opacity: 1;
+}
+}
+
+@keyframes slideOutToLeft {
+from {
+transform: translateX(20px);
+opacity: 1;
+}
+to {
+transform: translateX(-80px);
+opacity: 0;
+}
+}
+
+.project-card {
+width: 270px;
+height: 150px;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+cursor: pointer;
+transition: transform 0.3s ease-in-out;
+position: relative;
+}
+
+.project-card:hover {
+transform: scale(1.1);
+}
+
+.project-thumbnail-wrapper {
+position: relative;
+width: 100%;
+height: 100%;
+}
+
+.project-thumbnail {
+filter: blur(1.5px);
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 12px;
+}
+
+/* Text overlay at bottom */
+.project-title-overlay {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+padding: 8px 12px;
+background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+color: white;
+font-size: 24px;
+font-weight: bold;
+border-bottom-left-radius: 12px;
+border-bottom-right-radius: 12px;
+}
+
+.explore-more-btn {
+position: absolute;
+top: 90%;
+left: 40%;
+width: 45%;
+background: linear-gradient(to right, #003087, #7B00FF);
+border: none;
+color: #fff;
+margin-top: 1rem;
+margin-right: 2rem;
+padding: 0.75rem 0.5rem;
+font-size: 20px;
+font-weight: 600;
+cursor: pointer;
+border-radius: 25px;
+transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.explore-more-btn:hover {
+background-color: #003087;
+transform: scale(1.05);
+}
+
+.slider-indicators {
+position: absolute;
+bottom: 7.5%;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+gap: 10px;
+z-index: 10;
+}
+
+.slider-bullet {
+width: 14px;
+height: 14px;
+background-color: #5a78ba; /* Inactive color */
+border-radius: 50%;
+transition: all 1s ease-in-out;
+opacity: 0.7;
+}
+
+.slider-bullet.active {
+width: 40px;
+border-radius: 20px;
+background-color: #003087; /* Active blue color */
+opacity: 1;
+}
+
+/* Navigation controls for previous/next */
+.navigation-controls {
+position: absolute;
+top: 50%;
+left: 0;
+width: 100%;
+transform: translateY(-50%);
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 10;
+pointer-events: none; /* so swiping still works on background */
+}
+
+.navigation-controls button {
+pointer-events: auto;
+background: none;
+border: none;
+color: #003087;
+font-size: 3rem;
+cursor: pointer;
+transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+margin: 0 20px;
+opacity: 0.4;
+}
+
+.navigation-controls button:hover {
+color: #01348e;
+transform: scale(1.15);
+opacity: 1;
+}
+
+/* responsive */
+@media (max-width: 1024px) {
+.center-building-img {
+max-width: 80%;
+}
+.solutions-list li,
+.projects-list li {
+font-size: 0.9rem;
+}
+.vertical-title-left,
+.vertical-title-right {
+font-size: 1.2rem;
+}
+}
+
+@media (max-width: 768px) {
+.main-content {
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-start;
+}
+.left-panel,
+.right-panel {
+width: 100%;
+height: auto;
+position: static;
+text-align: center;
+}
+.vertical-title-left,
+.vertical-title-right {
+display: none; 
+}
+.solutions-list,
+.projects-list {
+position: static;
+display: flex;
+justify-content: center;
+margin: 1rem 0;
+}
+.center-panel {
+width: 100%;
+height: auto;
+margin-bottom: 2rem;
+}
+}

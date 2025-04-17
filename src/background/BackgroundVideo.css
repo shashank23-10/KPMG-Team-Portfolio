@@ -1,0 +1,14 @@
+.video-background {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding-top: 30vh;
+}

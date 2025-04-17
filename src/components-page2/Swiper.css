@@ -1,0 +1,499 @@
+/* Ensure the body doesn't scroll while on this page */
+body.swiper-page {
+  overflow: hidden;
+  font-family: 'Gothic A1', sans-serif;
+}
+
+/* Swiper container with a background video */
+.swiper-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 90vh;
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Navigation Buttons */
+.nav-button {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.01); 
+  color: #003087;
+  font-size: 1.5vw;
+  width: 3vw;
+  /* height: 100px; */
+  height: 10vh;
+  cursor: pointer;
+  text-align: center;
+  line-height: 52px;
+  border: 1px solid #003087;
+  border-radius: 0;
+  z-index: 2;
+  transition: background-color 0.3s, opacity 0.3s, transform 0.3s;
+  opacity: 0.6;
+}
+.nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 1;
+}
+.nav-button--left {
+  left: 17vw;
+}
+.nav-button--right {
+  right: 17vw;
+}
+
+/* Cards Container */
+.cards-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Card Styling */
+.card {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  /* width: 48rem; */
+  width: 36vw;
+  /* height: 28rem; */
+  height: 38vh;
+  transform: translate(
+    calc(-50% + var(--offset) * 50vw),
+    -50%
+  ) scale(0.7);
+  transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+  opacity: 0.45;
+  will-change: transform, opacity;
+  overflow: hidden;
+  border-radius: 32px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.card.active {
+  z-index: 2;
+  transform: translate(
+    calc(-50% + var(--offset) * 60vw),
+    -50%
+  ) scale(1.4);
+  opacity: 1;
+}
+.card:not(.active) img {
+  filter: blur(3px);
+  transition: filter 0.3s ease;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.556);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05);
+  transition: transform 7.5s ease;
+}
+
+/* Zoom animation for slideshow images */
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+.card img.zoom {
+  animation: zoomIn 8.5s forwards;
+}
+
+/* Feature Image Title over bottom of image */
+.feature-image-title {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: white;
+  padding: 6px 12px;
+  font-size: 1.2vw;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  font-weight: 500;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.feature-image-text {
+  padding: 6px 6px 6px 0;
+}
+
+@keyframes slideOutDownFade {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Inner overlay container starts hidden with blur effect */
+.inner-swiper-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  padding: 0;
+  opacity: 0;
+  background: transparent;
+  transform: translateX(-50px);
+}
+
+/* The title starts off hidden */
+.usecase-title {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: none;
+}
+
+/* The description starts off hidden */
+.usecase-description {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: none;
+}
+
+/* Remove the animation from the container and let individual buttons animate */
+/* Old rule removed:
+.usecase-buttons {
+  transform: scale(0);
+  opacity: 0;
+  transition: none;
+}
+*/
+
+/* Instead, the container remains unchanged for layout */
+.usecase-buttons {
+  /* No initial transform/opacity so that only the buttons animate */
+  display: flex;
+  gap: 10px;
+}
+
+/* Set initial state on each button inside the links */
+.usecase-buttons a button {
+  transform: scale(0);
+  opacity: 0;
+  transition: none;
+}
+
+/* Keyframe Animations for Hover Effects */
+
+/* Slide in the overlay container (blur effect) */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in the usecase title */
+@keyframes slideInTitle {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide in the usecase description */
+@keyframes slideInDesc {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Pop-up animation for the buttons: scaling 0 -> 1.1 -> 1 */
+@keyframes popUp {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Hover State Animations - Sequential Appearances */
+.card:hover .inner-swiper-container {
+  animation: slideIn 2s forwards;
+}
+
+.card:hover .usecase-title {
+  animation: slideInTitle 3s forwards 0.5s;
+}
+
+.card:hover .usecase-description {
+  animation: slideInDesc 4s forwards 0.5s;
+}
+
+/* Animate each button individually with a staggered delay */
+.card:hover .usecase-buttons a:nth-child(1) button {
+  animation: popUp 6s forwards 0.5s;
+}
+.card:hover .usecase-buttons a:nth-child(2) button {
+  animation: popUp 6s forwards 0.5s;
+}
+
+/* On hover over card, hide the feature image title */
+.card:hover .feature-image-title {
+  animation: slideOutDownFade 1.5s forwards ease;
+}
+
+/* Container Styling for Feature Boxes */
+.left-column-swiper-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  gap: 1rem;
+  border-radius: 12px;
+  padding: 20px;
+  /* width: 300px; */
+  width: 12.5vw;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  border: 0.1px solid rgba(255, 255, 255, 0.556);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  position: relative;
+}
+
+/* Title Styling */
+.usecase-title {
+  /* font-size: 1.6rem; */
+  font-size: 1vw;
+  font-weight: 700;
+  line-height: 1;
+  color: white;
+  margin-top: 0.15vh;
+}
+
+/* Description */
+.usecase-description {
+  font-size: 0.55vw;
+  line-height: 1.2;
+  color: #e0e0e0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Buttons Container Positioning */
+.usecase-buttons {
+  position: absolute;
+  top: 80%;
+  left: 1vw;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+/* Common Button Styles */
+.usecase-buttons button {
+  border: none;
+  padding: 10px 0.5vw;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  /* font-size: 0.85rem; */
+  font-size: 0.55vw;
+  transition: transform 0.2s ease;
+}
+
+/* Button Hover Effect */
+.usecase-buttons button:hover {
+  transform: scale(1.05);
+}
+
+/* Individual Buttons */
+.demo-btn {
+  background: linear-gradient(to right, #002F7B, #002F7B);
+  color: white;
+}
+
+.live-btn {
+  background: linear-gradient(to right, #7E1EFF, #CB25E8);
+  color: white;
+}
+
+/* Revised Go Back Button Styles */
+.go-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1.2vh;
+  left: 5vw;
+  width: 60px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #003087;
+  font-size: 0.8vw;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  background: #EEEEEEAB;
+  border: 1px solid #003087;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+}
+
+/* Arrow Styling */
+.go-back-btn .arrow {
+  color: #003087;
+  font-size: 28px;
+  transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Text initially hidden/collapsed */
+.go-back-btn .text {
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: center;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-left: 0;
+  transition: all 0.3s ease;
+}
+
+/* Go Back Button Hover State */
+.go-back-btn:hover{
+  width: 250px;
+  padding: 8px 12px;
+}
+.go-back-btn:hover .text {
+  /* width: 200px; */
+  width: 25vw;
+  opacity: 1;
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+/* Animate arrow on hover */
+.go-back-btn:hover .arrow {
+  transform: translateX(-2px);
+}
+
+/* Slider Indicators (Timeline.js design) */
+.swiper-slider-indicators {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.slider-bullets {
+  display: flex;
+  gap: 0.2vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #5a78ba;
+  border-radius: 50%;
+  transition: all 1s ease;
+  opacity: 0.7;
+}
+
+.slider-bullet.active {
+  width: 20px;
+  border-radius: 20px;
+  background-color: #003087;
+  opacity: 1;
+}
+
+/* Global Overlay for Card Heading and Text */
+.card-overlay {
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+  z-index: 4;
+  width: 80%;
+  height: auto;
+  font-family: 'Gothic A1', sans-serif;
+}
+.card-overlay-title {
+  /* font-size: 48px; */
+  font-size: 2.5vw;
+  font-weight: bold;
+  margin: 0;
+  color: #03377C;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+.card-overlay-text {
+  font-size: 1vw;
+  margin: 5px 0 0;
+  color: #03377C;
+}

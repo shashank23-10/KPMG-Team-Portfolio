@@ -1,0 +1,68 @@
+/* Container holds sidebar and main content side-by-side */
+.landing-page {
+display: flex;
+font-family: sans-serif;
+min-height: 80vh;
+max-height: 80vh;
+}
+
+/* Sidebar styling */
+.sidebar {
+    position: absolute;
+    top: 35%;
+width: 250px;
+background-color: #f2f2f2;
+padding: 1rem 0;
+z-index: 2;
+}
+
+.sidebar-list {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.sidebar-item {
+padding: 1rem;
+cursor: pointer;
+transition: background-color 0.2s ease;
+}
+
+.sidebar-item:hover {
+background-color: #eaeaea;
+}
+
+.sidebar-item.active {
+background-color: #ccc;
+font-weight: bold;
+}
+
+/* Main content area */
+.content-area {
+position: absolute;
+flex: 1;
+overflow: hidden; /* If image is larger, this helps maintain layout */
+display: flex;
+justify-content: center;
+align-items: center;
+max-height: 90vh;
+}
+
+/* Image styling */
+.content-image {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+/* Text overlay in the bottom-right corner */
+.text-overlay {
+position: absolute;
+bottom: 2rem;
+right: 2rem;
+background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+color: #ffffff;
+padding: 1rem;
+border-radius: 4px;
+max-width: 300px;
+}

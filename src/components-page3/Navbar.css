@@ -1,0 +1,152 @@
+/* Container for the whole navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* distribute logo and right section */
+    padding: 0.2rem 2rem;
+    height: 10vh;
+    background-color: rgba(217, 217, 217, 0.6);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* subtle bottom shadow */
+    border-bottom: 5px solid #0e6c9f;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Logo image styling */
+  .nav-logo-img {
+    margin-top: 1vh;
+    height: 12.5vh; 
+    width: auto;
+    padding-right: 12rem; /* use shorthand to push the logo to the left */
+  }
+  
+  /* Right navigation section */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem; /* spacing between nav items */
+  }
+  
+  /* Styling for text links */
+  .nav-right .link {
+    position: relative;
+    display: inline-flex; /* ensures alignment similar to buttons */
+    align-items: center;
+    color: #01348e;
+    text-decoration: none;
+    font-size: 1vw;
+    transition: color 0.3s ease;
+  }
+  
+  /* Underline effect for links */
+  .nav-right .link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: 1.5px;
+    background-color: #01348e;
+    transition: transform 0.5s ease;
+  }
+  
+  /* Animate underline on hover */
+  .nav-right .link:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+  
+  /* Persistent underline for active links */
+  .nav-right .link.active::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+  
+  /* Additional styling to make the active link stand out */
+  .nav-right .link.active {
+    font-weight: 800;
+    color: #01348e;
+  }
+  
+  /* Shared styling for buttons inside nav-right links */
+  .nav-right a button {
+    display: inline-flex;    /* ensures the button aligns with .link */
+    align-items: center;      /* centers button text vertically */
+    font-size: 1vw;
+    font-weight: 600;
+    color: #fff;
+    background-color: #01348e;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Adjusted styling for the country button */
+  #country {
+    font-size: 100%;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left:10px ;
+  }
+  
+  /* Language dropdown styling */
+  .language-dropdown {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* internal spacing between language-code and dropdown icon is slightly lesser than the 2.5rem gap used at the nav level */
+    font-size: 1vw;
+    color: #8e8e8e;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .language-code {
+    font-weight: 400;
+  }
+  
+  .dropdown-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dropdown-icon img {
+    display: block;
+    width: auto;
+    height: 0.8vh; /* adjust size as needed */
+  }
+  
+  /* Dropdown Menu (if used) */
+  .dropdown-menu {
+    position: absolute;
+    left: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 20px;
+    padding: 4px 0;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+  
+  .dropdown-menu li {
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #f2f2f2;
+  }
+
+
+  /* Disable underline for links wrapping buttons */
+.nav-right .no-underline::after {
+  content: none;
+}

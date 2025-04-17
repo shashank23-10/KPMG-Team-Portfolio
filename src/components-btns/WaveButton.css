@@ -1,0 +1,66 @@
+/* Container for the button and its waves */
+
+.wave-button {
+    position: relative;
+    display: inline-block;
+}
+
+/* Button styling */
+.btn {
+    background-color: #6a0dad;
+    border: 2px solid #8e32d9;
+    color: #fff;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #8e32d9;
+}
+
+/* Base styles for each wave ring */
+.wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 115%;
+    height: 125%;
+    border: 2px solid #8e32d9;
+    border-radius: 9999px;
+    transform: translate(-50%, -50%) scale(0.5);
+    /* Initially hidden when not hovered */
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    animation: waveAnim 2s linear infinite;
+    transition: opacity 0.5s ease-out;
+}
+
+/* When hovering, display the waves continuously (constant opacity) */
+.wave-button:hover .wave {
+    opacity: 0.6;
+}
+
+/* Staggered animation delays for multiple waves */
+.wave1 {
+    animation-delay: 0.2s;
+}
+.wave2 {
+    animation-delay: 0.8s;
+}
+
+/* Keyframes: continuously scale out the waves without fading during hover */
+@keyframes waveAnim {
+    from {
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+}
