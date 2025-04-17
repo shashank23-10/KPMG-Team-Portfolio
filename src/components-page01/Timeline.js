@@ -1,6 +1,5 @@
 // src/components/Timeline.jsx
 import React, { useState, useEffect } from "react";
-import { useSwipeable } from "react-swipeable";
 import { Link } from "react-router-dom";
 import "./Timeline.css";
 import swirlVideo from "../assets/BGVideo.mp4";
@@ -26,7 +25,7 @@ export default function Timeline() {
   const [direction, setDirection] = useState(1); // 1 = next, -1 = prev
   const [animating, setAnimating] = useState(false);
 
-  // Change step with animation
+  // Change step with animation (only via clicks)
   const changeStep = (newStep, newDirection) => {
     if (newStep === currentStep) return;
     setDirection(newDirection);
@@ -36,18 +35,14 @@ export default function Timeline() {
     setTimeout(() => setAnimating(false), 2000);
   };
 
-  const handleNext = () => changeStep((currentStep + 1) % stepsData.length, 1);
-  const handlePrev = () =>
-    changeStep(
-      currentStep === 0 ? stepsData.length - 1 : currentStep - 1,
-      -1
-    );
-
-  const handlers = useSwipeable({
-    onSwipedLeft: handleNext,
-    onSwipedRight: handlePrev,
-    trackMouse: true,
-  });
+  const handleNext = () => {
+    const next = (currentStep + 1) % stepsData.length;
+    changeStep(next, 1);
+  };
+  const handlePrev = () => {
+    const prev = currentStep === 0 ? stepsData.length - 1 : currentStep - 1;
+    changeStep(prev, -1);
+  };
 
   // Animate projects list on step change
   useEffect(() => {
@@ -68,7 +63,7 @@ export default function Timeline() {
   }, []);
 
   return (
-    <div className="innovation-container" {...handlers}>
+    <div className="innovation-container">
       <div className="main-content">
 
         {/* Left Panel */}

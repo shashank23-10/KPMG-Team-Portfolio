@@ -67,9 +67,7 @@ const VideoPlayer = () => {
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = Math.floor(timeInSeconds % 60);
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-    const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
-    return `${formattedMinutes}:${formattedSeconds}`;
+    return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
   };
 
   // Progress slider background style
@@ -84,98 +82,51 @@ const VideoPlayer = () => {
     background: `linear-gradient(90deg, #003087 0%, #003087 ${volumePercentage}%, #ccc ${volumePercentage}%, #ccc 100%)`,
   };
 
-  // Handlers for play/pause, stop, fullscreen, progress, time update, metadata
-  const handlePlay = () => {
-    videoRef.current.play();
-    setIsPlaying(true);
-  };
-  const handlePause = () => {
-    videoRef.current.pause();
-    setIsPlaying(false);
-  };
-  const handleStop = () => {
-    videoRef.current.pause();
-    videoRef.current.currentTime = 0;
-    setCurrentTime(0);
-    setIsPlaying(false);
-  };
+  // Handlers
+  const handlePlay = () => { videoRef.current.play(); setIsPlaying(true); };
+  const handlePause = () => { videoRef.current.pause(); setIsPlaying(false); };
   const handleFullScreen = () => {
-    if (videoRef.current.requestFullscreen) {
-      videoRef.current.requestFullscreen();
-    } else if (videoRef.current.webkitRequestFullscreen) {
-      videoRef.current.webkitRequestFullscreen();
-    } else if (videoRef.current.mozRequestFullScreen) {
-      videoRef.current.mozRequestFullScreen();
-    } else if (videoRef.current.msRequestFullscreen) {
-      videoRef.current.msRequestFullscreen();
-    }
+    const videoEl = videoRef.current;
+    if (videoEl.requestFullscreen) videoEl.requestFullscreen();
+    else if (videoEl.webkitRequestFullscreen) videoEl.webkitRequestFullscreen();
+    else if (videoEl.mozRequestFullScreen) videoEl.mozRequestFullScreen();
+    else if (videoEl.msRequestFullscreen) videoEl.msRequestFullscreen();
   };
-  const handleProgressChange = (e) => {
-    const newTime = parseFloat(e.target.value);
-    videoRef.current.currentTime = newTime;
-    setCurrentTime(newTime);
-  };
+  const handleProgressChange = (e) => { videoRef.current.currentTime = parseFloat(e.target.value); setCurrentTime(parseFloat(e.target.value)); };
   const handleTimeUpdate = () => setCurrentTime(videoRef.current.currentTime);
   const handleLoadedMetadata = () => setDuration(videoRef.current.duration);
 
-  // Mute/unmute & volume change
   const toggleMute = () => {
     const newMute = !isMuted;
     setIsMuted(newMute);
     videoRef.current.muted = newMute;
-    if (newMute) {
-      setVolume(0);
-      videoRef.current.volume = 0;
-    } else {
-      setVolume(1);
-      videoRef.current.volume = 1;
-    }
+    setVolume(newMute ? 0 : 1);
+    if (!newMute) videoRef.current.volume = 1;
   };
   const handleVolumeChange = (e) => {
-    const newVolume = parseFloat(e.target.value);
-    setVolume(newVolume);
-    videoRef.current.volume = newVolume;
-    if (newVolume === 0) {
-      setIsMuted(true);
-      videoRef.current.muted = true;
-    } else {
-      setIsMuted(false);
-      videoRef.current.muted = false;
-    }
+    const newVol = parseFloat(e.target.value);
+    setVolume(newVol);
+    videoRef.current.volume = newVol;
+    setIsMuted(newVol === 0);
+    videoRef.current.muted = newVol === 0;
   };
 
-  // Show controls & reset hide timer
+  // Controls visibility
   const resetControlsTimer = () => {
     setControlsVisible(true);
-    if (hideTimer.current) clearTimeout(hideTimer.current);
+    clearTimeout(hideTimer.current);
     hideTimer.current = setTimeout(() => setControlsVisible(false), 5000);
   };
-  // only reset timer and track hover region when mouse moves
   const handleMouseMove = (e) => {
-    const y = e.clientY;
-    setIsPointerTop(y <= window.innerHeight * 0.2);
+    setIsPointerTop(e.clientY <= window.innerHeight * 0.2);
     resetControlsTimer();
   };
 
-  useEffect(() => {
-    resetControlsTimer();
-    return () => hideTimer.current && clearTimeout(hideTimer.current);
-  }, []);
-
-  // toggle play / pause on click
-  const togglePlayPause = () => {
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    } else {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
+  useEffect(() => { resetControlsTimer(); return () => clearTimeout(hideTimer.current); }, []);
 
   return (
     <div className="video-player-container">
-      <div className="video-wrapper" onMouseMove={handleMouseMove} onClick={togglePlayPause}>
+      <div className="video-wrapper" onMouseMove={handleMouseMove}>
         <video
           ref={videoRef}
           src={videoSrc}
@@ -184,19 +135,19 @@ const VideoPlayer = () => {
           onLoadedMetadata={handleLoadedMetadata}
         />
 
-        {/* Go Back button only visible when controlsVisible && isPointerTop */}
+        {/* Go Back */}
         <Link
           to={videoCard ? `/swiper/${videoCard.page}?activeStep=${videoCard.id}` : "/"}
           className={`go-back-button ${controlsVisible && isPointerTop ? "visible" : "hidden"}`}
         >
-          <span><img src={arrowIcon} alt="Go Back" /></span>
-          <h2>Go Back</h2>
+          <img src={arrowIcon} alt="Go Back" />
+          <span>Go Back</span>
         </Link>
 
-        {/* Controls Overlay */}
+        {/* Controls */}
         <div
           className={`controls-overlay ${controlsVisible ? "visible" : "hidden"}`}
-          onMouseEnter={() => { if (hideTimer.current) clearTimeout(hideTimer.current); setControlsVisible(true); }}
+          onMouseEnter={() => { clearTimeout(hideTimer.current); setControlsVisible(true); }}
           onMouseLeave={resetControlsTimer}
         >
           <input
@@ -214,9 +165,17 @@ const VideoPlayer = () => {
               <button onClick={isPlaying ? handlePause : handlePlay}>
                 {isPlaying ? <FaPause /> : <FaPlay />}
               </button>
-              <span className="time-display">{formatTime(currentTime)} / {formatTime(duration)}</span>
-              <div className="volume-control" onMouseEnter={() => { if (hideTimer.current) clearTimeout(hideTimer.current); }} onMouseLeave={resetControlsTimer}>
-                <button onClick={toggleMute}>{isMuted || volume === 0 ? <FaVolumeMute /> : <FaVolumeUp />}</button>
+              <span className="time-display">
+                {formatTime(currentTime)} / {formatTime(duration)}
+              </span>
+              <div
+                className="volume-control"
+                onMouseEnter={() => clearTimeout(hideTimer.current)}
+                onMouseLeave={resetControlsTimer}
+              >
+                <button onClick={toggleMute}>
+                  {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+                </button>
                 <input
                   type="range"
                   min="0"
@@ -230,7 +189,9 @@ const VideoPlayer = () => {
               </div>
             </div>
             <div className="controls-right">
-              <button onClick={handleFullScreen}><FaExpand /></button>
+              <button onClick={handleFullScreen}>
+                <FaExpand />
+              </button>
             </div>
           </div>
         </div>
