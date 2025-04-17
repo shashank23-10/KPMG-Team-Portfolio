@@ -12,23 +12,24 @@ import {
 import "./VideoPlayer.css";
 import arrowIcon from "../assets/arrow-icon.png";
 import cards from "../variablefiles/cards.jsx";
+import Logo from "../assets/KPMG Logo.png";
 
 
 // S3 video URLs
 const video1 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/1_Enterprise_Innovation/InnovationCentre/Innovation_Center.mp4";
 const video2 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/1_Enterprise_Innovation/Lighthouse/Lighthouse_arena.mp4";
-const video3 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/ExperienceStore/Experience_Store.mp4";
-const video4 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/ServiceCenter/Service_Center.mp4";
-const video5 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/VirtualMall/Virtual_Mall.mp4";
-const video6 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/3_Employee_Experience/HROnBoarding/HR_OnBoarding.mp4";
-const video7 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/3_Employee_Experience/OneBC/OneBC_Explore.mp4";
-// const video8 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/Cipla/Cipla.mp4";
-const video9 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/KBL/KBL_C.mp4";
-const video10 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/ONGC-exe/Ongc.mp4";
-const video11 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/ShivanE/KPMG_Kaleidoscope_ShivanE.mp4";
-const video12 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/5_LnD/CPCL/CPCL.mp4";
-const video13 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/5_LnD/ReLearn/Relearn.mp4";
-const video14 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/5_LnD/Shell/Shell.mp4";
+const video3 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/2_CustomerEngagement/ExperienceStore/Experience_Store.mp4";
+const video4 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/2_CustomerEngagement/ServiceCenter/Service_Center.mp4";
+const video5 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/2_CustomerEngagement/VirtualMall/Virtual_Mall.mp4";
+const video6 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/3_Employee_Experience/HROnBoarding/HR_OnBoarding.mp4";
+const video7 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/3_Employee_Experience/OneBC/OneBC_Explore.mp4";
+// const video8 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/4_Knowledge_Management/Cipla/Cipla.mp4";
+const video9 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/4_Knowledge_Management/KBL/KBL_C.mp4";
+const video10 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/4_Knowledge_Management/ONGC-exe/Ongc.mp4";
+const video11 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/4_Knowledge_Management/ShivanE/KPMG_Kaleidoscope_ShivanE.mp4";
+const video12 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/5_LnD/CPCL/CPCL.mp4";
+const video13 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/5_LnD/ReLearn/Relearn.mp4";
+const video14 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/5_LnD/Shell/Shell.mp4";
 
 const videoMapping = {
   "1": video1,
@@ -151,6 +152,14 @@ const VideoPlayer = () => {
   }, []);
 
   return (
+    <div className="video-player-fullscreen" onClick={handleScreenClick}>
+    {/* ⬆️ Custom navbar on top - completely outside */}
+    <div className="custom-video-navbar">
+        <div className="navbar-left">
+        <img src={Logo} alt="KPMG Logo" className="nav-logo-img" />
+        <h1 className="nav-title">Intelligent Solutions - Infinite Possibilities</h1>
+        </div>
+    </div>
     <div className="video-player-container" onClick={handleScreenClick}>
       <div className="video-wrapper" onMouseMove={handleMouseMove}>
         <video
@@ -222,7 +231,9 @@ const VideoPlayer = () => {
           </div>
         </div>
       </div>
+    </div>  
     </div>
+
   );
 };
 

@@ -1,5 +1,43 @@
 /* VideoPlayer.css */
 
+/* Full screen container to cover 100vh */
+.video-player-fullscreen {
+    height: 90vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Gothic A1', sans-serif;
+  }
+  
+  /* Custom top navbar */
+/* 🔥 Forcefully overlap global navbar */
+.custom-video-navbar {
+    position: fixed; /* Not absolute */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
+    z-index: 9999; /* Ensure it's on top of global navbar */
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+  /* 🎨 Soft solid background gradient */
+  background: linear-gradient(to bottom, #e6e6e6 0%, #f7f7f7 60%);
+
+  /* 🧱 Soft shadow for separation */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  /* 👇 Optional border for depth */
+  border-bottom: 1px solid #d9d9d9;
+}
+  
+  .video-navbar-heading {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  
+
 /* Container */
 .video-player-container {
     display: flex;
