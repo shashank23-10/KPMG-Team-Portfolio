@@ -38,28 +38,6 @@ function App() {
             <Route path="/" element={<Timeline />} />
             <Route path="/swiper/:pageId" element={<Swiper />} />
             <Route path="/video/:videoId" element={<VideoPlayer />} />
-            <Route path="/3" element={<HomePage />} />
-            <Route
-              path="/4"
-              element={
-                <div
-                  style={{
-                    margin: '20px 0',
-                    padding: '2rem',
-                    background: '#1c1c1c',
-                    minHeight: '10vh',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <WaveButton />
-                </div>
-              }
-            />
-            <Route path="/5" element={<Contact />} />
-            <Route path="/6" element={<LandingPage />} />
-            <Route path="/7" element={<VideoPlayer />} />
           </Routes>
         </Router>
       </div>

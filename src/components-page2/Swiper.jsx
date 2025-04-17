@@ -110,7 +110,7 @@ function Swiper() {
       {/* Go Back Button */}
       <Link to={`/?activeStep=${pageId}`} className='go-back-btn'>
         <span className="arrow"><FaArrowLeftLong /></span>
-        <span className="text">Explore other solutions</span>
+        <span className="text">Explore other focus areas</span>
       </Link>
       
       {/* Navigation Buttons */}

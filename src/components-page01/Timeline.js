@@ -70,7 +70,7 @@ export default function Timeline() {
         <div className="left-panel">
           <div className="vertical-title-left">
             <div className="vertical-title-content">
-              <span>SOLUTIONS</span>
+              <span>FOCUS AREAS</span>
               <img
                 src={require("../assets/solutions-icon.png")}
                 alt="Solutions Icon"
@@ -165,7 +165,7 @@ export default function Timeline() {
                 alt="Projects Icon"
                 className="vertical-icon"
               />
-              <span>PROJECTS</span>
+              <span>SOLUTIONS</span>
             </div>
           </div>
           <ul className="projects-list">

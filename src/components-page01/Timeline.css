@@ -28,6 +28,7 @@ body.innovation-page {
 
 /* Left panel: vertical text + Solutions list */
 .left-panel {
+  margin-top: -4vh ;
   width: 25%;
   height: 100%;
   position: relative;
@@ -41,7 +42,7 @@ body.innovation-page {
   transform: rotate(180deg);
   position: absolute;
   top: 0;
-  left: -25px;
+  left: -35px;
   font-weight: 700;
   /* font-size: 32px; */
   font-size: 2.5vh;
@@ -60,7 +61,7 @@ body.innovation-page {
   padding-left: 6px; 
   position: absolute;
   top: 5%;
-  left: 12.5%;
+  left: 10%;
   height: 45%;
 }
 
@@ -138,8 +139,8 @@ body.innovation-page {
   font-style: italic;
   display: flex;
   align-items: center;
-  left: 15px;
-  top: 70vh;
+  left: 0.6vw;
+  top: 67vh;
   width: 35vw;
   height: 125.81px;
   font-size: 2.2vh;
@@ -326,6 +327,7 @@ body.innovation-page {
 
 /* Right panel: vertical text + Projects */
 .right-panel {
+  margin-top: -5vh ;
   width: 25%;
   height: 100%;
   position: relative;
@@ -340,7 +342,7 @@ body.innovation-page {
   writing-mode: vertical-rl;
   position: absolute;
   top: 0%;
-  right: 0%;
+  right: -32px;
   font-weight: 700;
   font-size: 2.5vh;
   color: #003087;
@@ -380,7 +382,7 @@ body.innovation-page {
   top: 5%;
   list-style: none;
   padding: 0;
-  margin: 0 5.5vw;
+  margin: 0 3.6vw;
   display: flex;
   flex-direction: column;
   gap: 1.5vh;
@@ -469,8 +471,8 @@ body.innovation-page {
 
 .explore-more-btn {
   position: absolute;
-  top: 73.5vh;
-  left: 40%;
+  top: 72.5vh;
+  left: 48%;
   width: 45%;
   background: linear-gradient(to right, #003087, #7B00FF);
   border: none;

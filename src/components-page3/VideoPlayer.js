@@ -13,9 +13,10 @@ import "./VideoPlayer.css";
 import arrowIcon from "../assets/arrow-icon.png";
 import cards from "../variablefiles/cards.jsx";
 
+
 // S3 video URLs
-const video1 = "https://ds-portfolio-data.s3.us-east-1.amazonaws.com/assets-ds-portfolio/1_Enterprise_Innovation/InnovationCentre/Innovation_Center.mp4";
-const video2 = "https://ds-portfolio-data.s3.us-east-1.amazonaws.com/assets-ds-portfolio/1_Enterprise_Innovation/Lighthouse/Lighthouse_arena.mp4";
+const video1 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/1_Enterprise_Innovation/InnovationCentre/Innovation_Center.mp4";
+const video2 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/1_Enterprise_Innovation/Lighthouse/Lighthouse_arena.mp4";
 const video3 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/ExperienceStore/Experience_Store.mp4";
 const video4 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/ServiceCenter/Service_Center.mp4";
 const video5 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/VirtualMall/Virtual_Mall.mp4";
@@ -59,32 +60,35 @@ const VideoPlayer = () => {
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(true);
-  // track if pointer is within top 20vh
   const [isPointerTop, setIsPointerTop] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Format seconds into mm:ss
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = Math.floor(timeInSeconds % 60);
     return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
   };
 
-  // Progress slider background style
   const progressPercentage = duration ? (currentTime / duration) * 100 : 0;
   const sliderStyle = {
     background: `linear-gradient(90deg, #003087 0%, #003087 ${progressPercentage}%, #ccc ${progressPercentage}%, #ccc 100%)`,
   };
 
-  // Volume slider background style
   const volumePercentage = volume * 100;
   const volumeSliderStyle = {
     background: `linear-gradient(90deg, #003087 0%, #003087 ${volumePercentage}%, #ccc ${volumePercentage}%, #ccc 100%)`,
   };
 
-  // Handlers
-  const handlePlay = () => { videoRef.current.play(); setIsPlaying(true); };
-  const handlePause = () => { videoRef.current.pause(); setIsPlaying(false); };
+  const handlePlay = () => {
+    videoRef.current.play();
+    setIsPlaying(true);
+  };
+
+  const handlePause = () => {
+    videoRef.current.pause();
+    setIsPlaying(false);
+  };
+
   const handleFullScreen = () => {
     const videoEl = videoRef.current;
     if (videoEl.requestFullscreen) videoEl.requestFullscreen();
@@ -92,7 +96,12 @@ const VideoPlayer = () => {
     else if (videoEl.mozRequestFullScreen) videoEl.mozRequestFullScreen();
     else if (videoEl.msRequestFullscreen) videoEl.msRequestFullscreen();
   };
-  const handleProgressChange = (e) => { videoRef.current.currentTime = parseFloat(e.target.value); setCurrentTime(parseFloat(e.target.value)); };
+
+  const handleProgressChange = (e) => {
+    videoRef.current.currentTime = parseFloat(e.target.value);
+    setCurrentTime(parseFloat(e.target.value));
+  };
+
   const handleTimeUpdate = () => setCurrentTime(videoRef.current.currentTime);
   const handleLoadedMetadata = () => setDuration(videoRef.current.duration);
 
@@ -103,6 +112,7 @@ const VideoPlayer = () => {
     setVolume(newMute ? 0 : 1);
     if (!newMute) videoRef.current.volume = 1;
   };
+
   const handleVolumeChange = (e) => {
     const newVol = parseFloat(e.target.value);
     setVolume(newVol);
@@ -111,21 +121,37 @@ const VideoPlayer = () => {
     videoRef.current.muted = newVol === 0;
   };
 
-  // Controls visibility
   const resetControlsTimer = () => {
     setControlsVisible(true);
     clearTimeout(hideTimer.current);
     hideTimer.current = setTimeout(() => setControlsVisible(false), 5000);
   };
+
   const handleMouseMove = (e) => {
     setIsPointerTop(e.clientY <= window.innerHeight * 0.2);
     resetControlsTimer();
   };
 
-  useEffect(() => { resetControlsTimer(); return () => clearTimeout(hideTimer.current); }, []);
+  // 🔥 Play/Pause on entire screen click
+  const handleScreenClick = (e) => {
+    // Ignore clicks on buttons or input sliders
+    if (
+      e.target.tagName === "BUTTON" ||
+      e.target.tagName === "INPUT" ||
+      e.target.closest(".controls-overlay")
+    ) {
+      return;
+    }
+    isPlaying ? handlePause() : handlePlay();
+  };
+
+  useEffect(() => {
+    resetControlsTimer();
+    return () => clearTimeout(hideTimer.current);
+  }, []);
 
   return (
-    <div className="video-player-container">
+    <div className="video-player-container" onClick={handleScreenClick}>
       <div className="video-wrapper" onMouseMove={handleMouseMove}>
         <video
           ref={videoRef}

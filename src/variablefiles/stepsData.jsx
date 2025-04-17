@@ -11,46 +11,46 @@
     import { BsPersonLinesFill } from "react-icons/bs";
 
 // import project11 from "../assets/1_Enterprise_Innovation/InnovationCentre/4.png";
-const project11 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/1_Enterprise_Innovation/InnovationCentre/4.png";
+const project11 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/1_Enterprise_Innovation/InnovationCentre/4.png";
 
 // import project12 from "../assets/1_Enterprise_Innovation/Lighthouse/2.png";
-const project12 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/1_Enterprise_Innovation/Lighthouse/2.png";
+const project12 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/1_Enterprise_Innovation/Lighthouse/2.png";
 
 // import project21 from "../assets/2_CustomerEngagement/ExperienceStore/1.png";
-const project21 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/ExperienceStore/1.png";
+const project21 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/2_CustomerEngagement/ExperienceStore/1.png";
 
 // import project22 from "../assets/2_CustomerEngagement/ServiceCenter/1.png";
-const project22 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/ServiceCenter/1.png";
+const project22 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/2_CustomerEngagement/ServiceCenter/1.png";
 
 // import project23 from "../assets/2_CustomerEngagement/VirtualMall/1.png";
-const project23 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/VirtualMall/1.png";
+const project23 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/2_CustomerEngagement/VirtualMall/1.png";
 
 // import project31 from "../assets/3_Employee_Experience/HROnBoarding/1.png";
-const project31 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/3_Employee_Experience/HROnBoarding/1.png";
+const project31 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/3_Employee_Experience/HROnBoarding/1.png";
 
 // import project32 from "../assets/3_Employee_Experience/OneBC/1.png";
-const project32 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/3_Employee_Experience/OneBC/1.png";
+const project32 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/3_Employee_Experience/OneBC/1.png";
 
 // import project41 from "../assets/4_Knowledge_Management/Cipla/1.png";
-const project41 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/Cipla/1.png";
+const project41 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/4_Knowledge_Management/Cipla/1.png";
 
 // import project42 from "../assets/4_Knowledge_Management/KBL/1.png";
-const project42 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/KBL/1.png";
+const project42 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/4_Knowledge_Management/KBL/1.png";
 
 // import project43 from "../assets/4_Knowledge_Management/ONGC-exe/1.png";
-const project43 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/ONGC-exe/1.png";
+const project43 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/4_Knowledge_Management/ONGC-exe/1.png";
 
 // import project44 from "../assets/4_Knowledge_Management/ShivanE/1.png";
-const project44 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/ShivanE/1.png";
+const project44 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/4_Knowledge_Management/ShivanE/1.png";
 
 // import project51 from "../assets/5_LnD/CPCL/1.png";
-const project51 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/5_LnD/CPCL/1.png";
+const project51 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/5_LnD/CPCL/1.png";
 
 // import project52 from "../assets/5_LnD/ReLearn/1.png";
-const project52 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/5_LnD/ReLearn/1.png";
+const project52 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/5_LnD/ReLearn/1.png";
 
 // import project53 from "../assets/5_LnD/Shell/1.png";
-const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/5_LnD/Shell/1.png";
+const project53 = "https://dfa6lpn2gurde.cloudfront.net/assets-ds-portfolio/5_LnD/Shell/1.png";
 
 
 
