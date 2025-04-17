@@ -1,53 +1,47 @@
+// src/components/Timeline.jsx
 import React, { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
+import { Link } from "react-router-dom";
 import "./Timeline.css";
 import swirlVideo from "../assets/BGVideo.mp4";
 import stepsData from "../variablefiles/stepsData.jsx";
 import RollingSlider from "../background/RollingSlider.js";
 
 export default function Timeline() {
-  // Parse query parameters to find an activeStep value
+  // Parse query parameters for an activeStep value
   const searchParams = new URLSearchParams(window.location.search);
   const activeStepParam = searchParams.get("activeStep");
 
-  // Determine the initial active step index from stepsData (default to 0)
+  // Determine initial active step index
   let initialStep = 0;
   if (activeStepParam) {
-    const index = stepsData.findIndex(
+    const idx = stepsData.findIndex(
       (step) => step.id.toString() === activeStepParam
     );
-    if (index !== -1) {
-      initialStep = index;
-    }
+    if (idx !== -1) initialStep = idx;
   }
 
   const [currentStep, setCurrentStep] = useState(initialStep);
   const [prevStep, setPrevStep] = useState(initialStep);
-  const [direction, setDirection] = useState(1); // 1 for next, -1 for previous
+  const [direction, setDirection] = useState(1); // 1 = next, -1 = prev
   const [animating, setAnimating] = useState(false);
 
-  // Function to change steps with animation
+  // Change step with animation
   const changeStep = (newStep, newDirection) => {
     if (newStep === currentStep) return;
     setDirection(newDirection);
     setPrevStep(currentStep);
     setCurrentStep(newStep);
     setAnimating(true);
-    // Match this timeout with the CSS animation duration (0.6s below)
-    setTimeout(() => {
-      setAnimating(false);
-    }, 2000);
+    setTimeout(() => setAnimating(false), 2000);
   };
 
-  const handleNext = () => {
-    const nextStep = (currentStep + 1) % stepsData.length;
-    changeStep(nextStep, 1);
-  };
-
-  const handlePrev = () => {
-    const prevIndex = currentStep === 0 ? stepsData.length - 1 : currentStep - 1;
-    changeStep(prevIndex, -1);
-  };
+  const handleNext = () => changeStep((currentStep + 1) % stepsData.length, 1);
+  const handlePrev = () =>
+    changeStep(
+      currentStep === 0 ? stepsData.length - 1 : currentStep - 1,
+      -1
+    );
 
   const handlers = useSwipeable({
     onSwipedLeft: handleNext,
@@ -55,31 +49,28 @@ export default function Timeline() {
     trackMouse: true,
   });
 
-  // New useEffect to handle projects-list animation on step change
+  // Animate projects list on step change
   useEffect(() => {
-    const projectsList = document.querySelector('.projects-list');
+    const projectsList = document.querySelector(".projects-list");
     if (!projectsList) return;
-    // Remove any previous animation classes
-    projectsList.classList.remove('enter', 'exit');
-    // Trigger exit animation
-    projectsList.classList.add('exit');
-    // After exit animation, remove exit and trigger enter animation
+    projectsList.classList.remove("enter", "exit");
+    projectsList.classList.add("exit");
     setTimeout(() => {
-      projectsList.classList.remove('exit');
-      projectsList.classList.add('enter');
+      projectsList.classList.remove("exit");
+      projectsList.classList.add("enter");
     }, 600);
   }, [currentStep]);
 
+  // Set body class for page
   useEffect(() => {
     document.body.className = "innovation-page";
-    return () => {
-      document.body.className = "";
-    };
+    return () => (document.body.className = "");
   }, []);
 
   return (
     <div className="innovation-container" {...handlers}>
       <div className="main-content">
+
         {/* Left Panel */}
         <div className="left-panel">
           <div className="vertical-title-left">
@@ -95,16 +86,23 @@ export default function Timeline() {
           <ul className="solutions-list">
             {stepsData.map((step, index) => (
               <li
-                key={index}
-                className={`solution-item ${index === currentStep ? "active" : ""}`}
-                onClick={() => changeStep(index, index > currentStep ? 1 : -1)}
+                key={step.id}
+                className={`solution-item ${
+                  index === currentStep ? "active" : ""
+                }`}
+                onClick={() =>
+                  changeStep(index, index > currentStep ? 1 : -1)
+                }
               >
-                {step.iconComponent && <step.iconComponent className="solution-icon" />}
+                {step.iconComponent && (
+                  <step.iconComponent className="solution-icon" />
+                )}
                 {step.zone}
               </li>
             ))}
           </ul>
         </div>
+
         {/* Left Description */}
         <div className="left-description-container">
           {animating ? (
@@ -122,19 +120,28 @@ export default function Timeline() {
             </div>
           )}
         </div>
+
         {/* Center Panel */}
         <div className="center-panel">
           <div className="center-top">
             {animating ? (
               <>
-                <div className={`img-wrapper ${direction === 1 ? "slide-out-left" : "slide-out-right"}`}>
+                <div
+                  className={`img-wrapper ${
+                    direction === 1 ? "slide-out-left" : "slide-out-right"
+                  }`}
+                >
                   <img
                     src={stepsData[prevStep].imageUrl}
                     alt={stepsData[prevStep].zone}
                     className={`center-building-img step-${prevStep}`}
                   />
                 </div>
-                <div className={`img-wrapper ${direction === 1 ? "slide-in-right" : "slide-in-left"}`}>
+                <div
+                  className={`img-wrapper ${
+                    direction === 1 ? "slide-in-right" : "slide-in-left"
+                  }`}
+                >
                   <img
                     src={stepsData[currentStep].imageUrl}
                     alt={stepsData[currentStep].zone}
@@ -153,6 +160,7 @@ export default function Timeline() {
             )}
           </div>
         </div>
+
         {/* Right Panel */}
         <div className="right-panel">
           <div className="vertical-title-right">
@@ -166,10 +174,12 @@ export default function Timeline() {
             </div>
           </div>
           <ul className="projects-list">
-            {stepsData[currentStep].projects.map((project, index) => (
-              <li key={index} className="project-card">
+            {stepsData[currentStep].projects.map((project) => (
+              <li key={project.id} className="project-card">
                 <div className="project-thumbnail-wrapper">
-                  <a key={project.title} href={project.href}>
+                  <Link
+                    to={`/swiper/${stepsData[currentStep].id}?activeStep=${project.id}`}
+                  >
                     <img
                       src={project.image}
                       alt={project.title}
@@ -178,21 +188,25 @@ export default function Timeline() {
                     <div className="project-title-overlay">
                       {project.title}
                     </div>
-                  </a>
+                  </Link>
                 </div>
               </li>
             ))}
           </ul>
-          <a href={stepsData[currentStep].href}>
+          <Link to={stepsData[currentStep].href}>
             <button className="explore-more-btn">Explore More</button>
-          </a>
+          </Link>
         </div>
       </div>
+
+      {/* Slider Indicators */}
       <div className="slider-indicators">
         {stepsData.map((_, index) => (
           <span
             key={index}
-            className={`slider-bullet ${index === currentStep ? "active" : ""}`}
+            className={`slider-bullet ${
+              index === currentStep ? "active" : ""
+            }`}
           />
         ))}
       </div>

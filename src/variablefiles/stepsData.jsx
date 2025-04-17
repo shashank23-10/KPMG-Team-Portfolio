@@ -70,11 +70,13 @@ const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfoli
         imageUrlMiddleBottom: slider2,
             projects: [
                 {
+                    id:"1",
                     href:"innovation-centre",
                     image: project11,
                     title: "Innovation Centre",
                 },
                 {
+                    id:"2",
                     href:"lighthouse",
                     image: project12,
                     title: "Lighthouse",
@@ -95,16 +97,19 @@ const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfoli
         imageUrlMiddleBottom: slider2,
         projects: [
             {
+                id:"3",
                 href:"experience-store",
                 image: project21,
                 title: "Experience Store",
             },
             {
+                id:"4",
                 href:"service-center",
                 image: project22,
                 title: "Service Center",
             },
             {
+                id:"5",
                 href:"virtual-mall",
                 image: project23,
                 title: "Virtual Mall",
@@ -125,11 +130,13 @@ const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfoli
         imageUrlMiddleBottom: slider2,
         projects: [
             {
+                id:"6",
                 href:"hr-onboarding",
                 image: project31,
                 title: "HR Onboarding",
             },
             {
+                id:"7",
                 href:"oneBC",
                 image: project32,
                 title: "OneBC",
@@ -150,21 +157,25 @@ const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfoli
         imageUrlMiddleBottom: slider2,
         projects: [
             {
+                id:"8",
                 href:"cipla",
                 image: project41,
                 title: "Cipla",
             },
             {
+                id:"9",
                 href:"kbl",
                 image: project42,
                 title: "KBL",
             },
             {
+                id:"10",
                 href:"ongc",
                 image: project43,
                 title: "ONGC",
             },
             {
+                id:"11",
                 href:"shivanE",
                 image: project44,
                 title: "ShivanE",
@@ -185,16 +196,19 @@ const project53 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfoli
         imageUrlMiddleBottom: slider2,
         projects: [
             {
+                id:"12",
                 href:"cpcl",
                 image: project51,
                 title: "CPCL",
             },
             {
+                id:"13",
                 href:"relearn",
                 image: project52,
                 title: "ReLearn",
             },
             {
+                id:"14",
                 href:"shell",
                 image: project53,
                 title: "Shell",
