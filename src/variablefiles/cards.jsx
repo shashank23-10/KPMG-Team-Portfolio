@@ -628,12 +628,12 @@ const cards = [
     useCaseDesc: "A mascot-based AI query assistant designed to reflect the company’s identity while providing quick, conversational access to internal and open-source customizable content. Set within a visually branded 3D backdrop, the avatar delivers responses in a friendly, on-brand manner focusing on simplicity, accessibility, and user engagement. Ideal for knowledge retrieval with a personalized, recognizable interface.",
     useCaseVideo: "/video/8",
     // features: [
-    //   {
-    //     image: swiper101,
-    //     title: "Feature One",
-    //     text: "Description for feature one."
-    //   },
-    //   {
+      // {
+        // image: swiper101,
+         //title: "Feature One",
+         //text: "Description for feature one."
+       //},
+       {
     //     image: swiper102,
     //     title: "Feature Two",
     //     text: "Description for feature two."
@@ -644,7 +644,7 @@ const cards = [
     //     text: "Description for feature three."
     //   }
     // ]
-  }*/,
+  },*/
   {
     id: 9,
     page: "4",

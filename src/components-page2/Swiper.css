@@ -34,7 +34,7 @@ body.swiper-page {
   text-align: center;
   line-height: 52px;
   border: 1px solid #003087;
-  border-radius: 0;
+  border-radius: 8px;
   z-index: 2;
   transition: background-color 0.3s, opacity 0.3s, transform 0.3s;
   opacity: 0.6;
@@ -270,15 +270,15 @@ body.swiper-page {
 }
 
 .card:hover .usecase-description {
-  animation: slideInDesc 4s forwards 0.5s;
+  animation: slideInDesc 2.5s forwards 1s;
 }
 
 /* Animate each button individually with a staggered delay */
 .card:hover .usecase-buttons a:nth-child(1) button {
-  animation: popUp 6s forwards 0.5s;
+  animation: popUp 1.5s forwards 2s;
 }
 .card:hover .usecase-buttons a:nth-child(2) button {
-  animation: popUp 6s forwards 0.5s;
+  animation: popUp 1.5s forwards 2s;
 }
 
 /* On hover over card, hide the feature image title */

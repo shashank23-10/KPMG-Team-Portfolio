@@ -16,7 +16,7 @@
     margin-top: 1vh;
     height: 12.5vh; 
     width: auto;
-    padding-right: 12rem; /* use shorthand to push the logo to the left */
+    padding-right: 0rem; /* use shorthand to push the logo to the left */
   }
   
   /* Right navigation section */

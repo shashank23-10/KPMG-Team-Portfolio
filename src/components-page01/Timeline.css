@@ -96,7 +96,7 @@ body.innovation-page {
   cursor: pointer;
   opacity: 0; /* Start invisible */
   transform: translateX(-30px); /* Start shifted */
-  animation: fadeInFromLeft 3s ease-in-out forwards;
+  animation: fadeInFromLeft 1.5s ease-in-out forwards;
   will-change: opacity, transform;
 }
 
@@ -284,7 +284,7 @@ body.innovation-page {
   }
 }
 .slide-in-left {
-  animation: slideInLeft 1.5s ease-in-out forwards;
+  animation: slideInLeft 2.5s ease-in-out forwards;
 }
 
 /* Updated step classes
@@ -461,7 +461,7 @@ body.innovation-page {
   padding: 8px 12px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
   color: white;
-  font-size: 0.6vw;
+  font-size: 0.8vw;
   font-weight: bold;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;

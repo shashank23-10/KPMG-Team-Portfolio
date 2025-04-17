@@ -21,7 +21,7 @@ const video4 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2
 const video5 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/2_CustomerEngagement/VirtualMall/Virtual_Mall.mp4";
 const video6 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/3_Employee_Experience/HROnBoarding/HR_OnBoarding.mp4";
 const video7 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/3_Employee_Experience/OneBC/OneBC_Explore.mp4";
-const video8 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/Cipla/Cipla.mp4";
+//const video8 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/Cipla/Cipla.mp4";
 const video9 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/KBL/KBL_C.mp4";
 const video10 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/ONGC-exe/Ongc.mp4";
 const video11 = "https://ds-portfolio-data.s3.amazonaws.com/assets-ds-portfolio/4_Knowledge_Management/ShivanE/KPMG_Kaleidoscope_ShivanE.mp4";
@@ -37,7 +37,7 @@ const videoMapping = {
   "5": video5,
   "6": video6,
   "7": video7,
-  "8": video8,
+  //"8": video8,
   "9": video9,
   "10": video10,
   "11": video11,
