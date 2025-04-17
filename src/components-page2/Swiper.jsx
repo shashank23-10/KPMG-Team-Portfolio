@@ -103,6 +103,8 @@ function Swiper() {
     };
   }, []);
 
+  const [hasHovered, setHasHovered] = useState(false);
+
   return (
     <div className="swiper-container">
       {/* Go Back Button */}
@@ -133,14 +135,14 @@ function Swiper() {
           return (
             <div
               key={card.id}
-              className={`card ${offset === 0 ? 'active' : ''}`}
+              className={`card ${offset === 0 ? 'active has-hover-support' : ''} ${offset === 0 && hasHovered ? 'has-hovered' : ''}`}
               style={{
                 '--offset': offset,
                 transition: disableTransition
                   ? 'none'
                   : 'transform 0.7s ease, opacity 0.7s ease',
               }}
-              onMouseEnter={offset === 0 ? () => setIsHovered(true) : undefined}
+              onMouseEnter={offset === 0 ? () => { setIsHovered(true); setHasHovered(true); } : undefined}
               onMouseLeave={offset === 0 ? () => setIsHovered(false) : undefined}
             >
               <img key={slideshowIndex} src={imgSrc} alt={card.title} className={imgClass} />

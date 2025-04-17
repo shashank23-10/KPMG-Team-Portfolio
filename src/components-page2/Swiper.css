@@ -220,6 +220,18 @@ body.swiper-page {
   }
 }
 
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+
 /* Slide in the usecase title */
 @keyframes slideInTitle {
   from {
@@ -232,7 +244,17 @@ body.swiper-page {
   }
 }
 
-/* Slide in the usecase description */
+@keyframes slideOutTitle {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+
 @keyframes slideInDesc {
   from {
     opacity: 0;
@@ -244,7 +266,17 @@ body.swiper-page {
   }
 }
 
-/* Pop-up animation for the buttons: scaling 0 -> 1.1 -> 1 */
+@keyframes slideOutDesc {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+
 @keyframes popUp {
   0% {
     transform: scale(0);
@@ -260,26 +292,58 @@ body.swiper-page {
   }
 }
 
+@keyframes popOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+
 /* Hover State Animations - Sequential Appearances */
-.card:hover .inner-swiper-container {
+.card.has-hovered:hover .inner-swiper-container {
   animation: slideIn 2s forwards;
 }
 
-.card:hover .usecase-title {
+.card.has-hovered:not(:hover) .inner-swiper-container {
+  animation: slideOut 1s forwards;
+}
+
+/* Animate only after first hover */
+.card.has-hovered:hover .usecase-title {
   animation: slideInTitle 3s forwards 0.5s;
 }
 
-.card:hover .usecase-description {
+.card.has-hovered:not(:hover) .usecase-title {
+  animation: slideOutTitle 0.5s forwards;
+}
+
+.card.has-hovered:hover .usecase-description {
   animation: slideInDesc 2.5s forwards 1s;
 }
 
-/* Animate each button individually with a staggered delay */
-.card:hover .usecase-buttons a:nth-child(1) button {
+.card.has-hovered:not(:hover) .usecase-description {
+  animation: slideOutDesc 0.5s forwards;
+}
+
+.card.has-hovered:hover .usecase-buttons a:nth-child(1) button {
   animation: popUp 1.5s forwards 2s;
 }
-.card:hover .usecase-buttons a:nth-child(2) button {
+.card.has-hovered:not(:hover) .usecase-buttons a:nth-child(1) button {
+  animation: popOut 0.4s forwards;
+}
+
+.card.has-hovered:hover .usecase-buttons a:nth-child(2) button {
   animation: popUp 1.5s forwards 2s;
 }
+.card.has-hovered:not(:hover) .usecase-buttons a:nth-child(2) button {
+  animation: popOut 0.4s forwards;
+}
+
 
 /* On hover over card, hide the feature image title */
 .card:hover .feature-image-title {
