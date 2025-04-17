@@ -21,14 +21,8 @@
     display: flex;
     align-items: center;
     padding-left: 2rem;
-  /* 🎨 Soft solid background gradient */
-  background: linear-gradient(to bottom, #e6e6e6 0%, #f7f7f7 60%);
-
-  /* 🧱 Soft shadow for separation */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-
-  /* 👇 Optional border for depth */
-  border-bottom: 1px solid #d9d9d9;
+    background-color: #D9D9D9;
+    opacity: 0.6;
 }
   
   .video-navbar-heading {

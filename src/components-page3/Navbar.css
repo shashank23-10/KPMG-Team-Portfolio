@@ -8,6 +8,9 @@
   font-family: 'Gothic A1', sans-serif;
 }
 
+.navbar-links{
+  text-decoration: none ;
+}
 /* Left-aligned content: logo + title */
 .navbar-left {
   display: flex;
