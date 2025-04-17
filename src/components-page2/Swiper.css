@@ -379,7 +379,7 @@ body.swiper-page {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 1.2vh;
+  top: 1.1vh;
   left: 5vw;
   width: 60px;
   padding: 8px 12px;
@@ -391,7 +391,7 @@ body.swiper-page {
   overflow: hidden;
   background: #EEEEEEAB;
   border: 1px solid #003087;
-  border-radius: 18px;
+  border-radius: 8px;
   transition: all 0.3s ease;
   z-index: 10;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
