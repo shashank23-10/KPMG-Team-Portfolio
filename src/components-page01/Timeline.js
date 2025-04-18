@@ -1,11 +1,14 @@
 // src/components/Timeline.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Timeline.css";
 import swirlVideo from "../assets/BGVideo.mp4";
 import stepsData from "../variablefiles/stepsData.jsx";
 
 export default function Timeline() {
+  // Ref to keep track of pending timeouts
+  const timeouts = useRef([]);
+
   // Parse query parameters for an activeStep value
   const searchParams = new URLSearchParams(window.location.search);
   const activeStepParam = searchParams.get("activeStep");
@@ -32,32 +35,40 @@ export default function Timeline() {
 
   // Change step with coordinated animations
   const changeStep = (newStep, newDirection) => {
+    if (animating) return;               // Prevent mid-animation clicks
     if (newStep === currentStep) return;
-    // Left/center animation
+
+    // Clear any existing timeouts
+    timeouts.current.forEach(clearTimeout);
+    timeouts.current = [];
+
+    setAnimating(true);
     setDirection(newDirection);
     setPrevStep(currentStep);
     setCurrentStep(newStep);
-    setAnimating(true);
-    // Projects exit animation
     setIsProjectsExiting(true);
 
+    const exitDuration = 1500; // ms, matches CSS
+    const enterDuration = 1500;
+
     // After exit duration, swap in new projects and enter
-    const exitDuration = 600; // ms, matches CSS
-    const enterDuration = 600;
-    setTimeout(() => {
+    const exitTimeout = setTimeout(() => {
       setIsProjectsExiting(false);
       setProjectsStep(newStep);
       setIsProjectsEntering(true);
-      // Clear entering flag after enter animation
-      setTimeout(() => {
+
+      const enterTimeout = setTimeout(() => {
         setIsProjectsEntering(false);
       }, enterDuration);
+      timeouts.current.push(enterTimeout);
     }, exitDuration);
+    timeouts.current.push(exitTimeout);
 
-    // Clear main animating flag after full cycle (optional)
-    setTimeout(() => {
+    // Clear animating flag after full cycle
+    const clearAnimTimeout = setTimeout(() => {
       setAnimating(false);
-    }, 2000);
+    }, exitDuration + enterDuration);
+    timeouts.current.push(clearAnimTimeout);
   };
 
   const handleNext = () => {
@@ -69,14 +80,17 @@ export default function Timeline() {
     changeStep(prev, -1);
   };
 
-  // Set body class for page
+  // Set body class for page and cleanup on unmount
   useEffect(() => {
     document.body.className = "innovation-page";
-    return () => (document.body.className = "");
+    return () => {
+      document.body.className = "";
+      timeouts.current.forEach(clearTimeout);
+    };
   }, []);
 
   return (
-    <div className="innovation-container">
+    <div className={`innovation-container ${animating ? "is-animating" : ""}`}>
       <div className="main-content">
         {/* Left Panel */}
         <div className="left-panel">
@@ -184,8 +198,7 @@ export default function Timeline() {
           {/* Projects List with exit/enter animations */}
           <ul
             className={`projects-list ${
-              isProjectsExiting ? "exit" : 
-              isProjectsEntering ? "enter" : ""
+              isProjectsExiting ? "exit" : isProjectsEntering ? "enter" : ""
             }`}
           >
             {stepsData[projectsStep].projects.map((project) => (

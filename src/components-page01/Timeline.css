@@ -242,7 +242,7 @@ body.innovation-page {
   }
 }
 .slide-out-left {
-  animation: slideOutLeft 2s ease-in-out forwards;
+  animation: slideOutLeft 2.5s ease-in-out forwards;
 }
 
 @keyframes slideInRight {
@@ -256,7 +256,7 @@ body.innovation-page {
   }
 }
 .slide-in-right {
-  animation: slideInRight 2s ease-in-out forwards;
+  animation: slideInRight 2.5s ease-in-out forwards;
 }
 
 /* Backward transitions: Animate only in the X direction */
@@ -271,7 +271,7 @@ body.innovation-page {
   }
 }
 .slide-out-right {
-  animation: slideOutRight 1.5s ease-in-out forwards;
+  animation: slideOutRight 2.5s ease-in-out forwards;
 }
 
 @keyframes slideInLeft {
@@ -413,11 +413,11 @@ body.innovation-page {
 }
 
 .projects-list.enter {
-  animation: slideInFromRight 1s ease-in-out forwards;
+  animation: slideInFromRight 0.5s ease-in-out forwards;
 }
 
 .projects-list.exit {
-  animation: slideOutToLeft  1s ease-in-out forwards;
+  animation: slideOutToLeft  0.5s ease-in-out forwards;
 }
 
 
