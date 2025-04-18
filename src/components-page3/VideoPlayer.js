@@ -130,7 +130,10 @@ const resetControlsTimer = () => {
     hideTimer.current = setTimeout(() => setControlsVisible(false), 5000);
 };
 const handleMouseMove = (e) => {
-    setIsPointerTop(e.clientY <= window.innerHeight * 0.2);
+    const start = window.innerHeight * 0.1;  // 10%
+    const end   = window.innerHeight * 0.3;  // 30%
+    // true when pointer is between 10% and 30% of viewport height
+    setIsPointerTop(e.clientY >= start && e.clientY <= end);
     resetControlsTimer();
 };
 const handleScreenClick = (e) => {
