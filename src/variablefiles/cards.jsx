@@ -335,7 +335,7 @@ const cards = [
     id: 1,
     page: "1",
     title: "Enterprise Innovation",
-    text: "Interactive 3D digital environments such as Virtual Innovation Centers and Digital Showcases designed to enable users to navigate immersive spaces and engage with content dynamically. These platforms facilitate real-time collaboration, advanced content visualization, and enhanced stakeholder engagement within a highly experiential and customizable framework. Ideal for driving innovation dialogues, accelerating decision-making, and showcasing complex ideas with clarity and impact.",
+    text: "Interactive 3D platforms to drive enterprise-wide innovation, collaboration, and engagement. From showcasing solutions and delivering impactful executive briefings to enabling real-time co-creation across teams and stakeholders, these experiences are designed to reflect brand identity while fostering dynamic knowledge exchange and ideation.",
     image: swiper101,
     images: [
       swiper101,
@@ -356,7 +356,7 @@ const cards = [
       //swiper116,
     ],
     useCase: "Virtual Innovation Centre",
-    useCaseDesc: "A realistic, navigable 3D environment designed to showcase innovation through immersive digital replicas or custom-built spaces. Features AI-enabled avatar assistance, configurable architecture, and dedicated zones for collaboration, partnership engagement, and solution exploration. Includes sandbox environments for experimentation and a digital library for on-demand content access. Fully customizable to align with strategic goals and stakeholder experiences.",
+    useCaseDesc: "A realistic, navigable 3D experience designed to showcase and accelerate innovation. The platform enables teams, partners, and communities to explore ideas, collaborate, and co-create solutions within dynamic, customizable spaces. It supports interactive engagement, real-time collaboration, and seamless knowledge exchange—driving innovation through purposeful, connected experiences.",
     useCaseVideo: "/video/1",
     // features: [
     //   {
@@ -380,7 +380,7 @@ const cards = [
     id: 2,
     page: "1",
     title: "Enterprise Innovation",
-    text: "Interactive 3D digital environments such as Virtual Innovation Centers and Digital Showcases designed to enable users to navigate immersive spaces and engage with content dynamically. These platforms facilitate real-time collaboration, advanced content visualization, and enhanced stakeholder engagement within a highly experiential and customizable framework. Ideal for driving innovation dialogues, accelerating decision-making, and showcasing complex ideas with clarity and impact.",
+    text: "Interactive 3D platforms to drive enterprise-wide innovation, collaboration, and engagement. From showcasing solutions and delivering impactful executive briefings to enabling real-time co-creation across teams and stakeholders, these experiences are designed to reflect brand identity while fostering dynamic knowledge exchange and ideation.",
     image: swiper201,
     images: [
       swiper201,
@@ -391,7 +391,7 @@ const cards = [
       swiper206,
     ],
     useCase: "Digital Showcase",
-    useCaseDesc: "A high-impact 3D environment built for presenting brand stories, innovations, and key messages through immersive design. Features multiple interactive screens to display presentations, videos, and strategic highlights in a visually compelling format. Ideal for executive briefings, product demos, and stakeholder engagement. Customizable to reflect brand identity and messaging priorities.",
+    useCaseDesc: "A visually engaging, interactive 3D platform designed to showcase products, solutions, and services with impact. Customizable to reflect brand identity and messaging, it features multiple display zones ideal for executive briefings, product demonstrations, and immersive audience engagement.",
     useCaseVideo: "/video/2",
     // features: [
     //   {
@@ -415,7 +415,7 @@ const cards = [
     id: 3,
     page: "2",
     title: "Customer Engagement",
-    text: "Digitally reimagined customer touchpoints delivered through interactive 3D platforms, including virtual experience stores, AI-enabled service centers, and multi-brand shopping malls. These environments offer lifelike product interaction, intelligent support, and seamless navigation enhancing engagement, personalizing experiences, and elevating the end-to-end customer journey.",
+    text: "Digitally reimagined customer touchpoints delivered through interactive 3D platforms. These lifelike experiences offer AI-enabled intelligent support, impactful product demonstrations, and intuitive navigation—personalizing interactions and driving deeper engagement, boosting customer satisfaction, retention, and brand connection across every stage of the customer journey.",
     image: swiper301,
     images: [
       swiper301,
@@ -441,7 +441,7 @@ const cards = [
       //swiper321,
     ],
     useCase: "Virtual Experience Store",
-    useCaseDesc: "An interactive 3D retail environment that mirrors the functionality and feel of a physical store, enabling users to explore and engage with animated product simulations. Realistic digital assets demonstrate features in action, enhancing product understanding and decision-making. AI-powered avatars provide personalized assistance and respond to user queries in real time. Designed to elevate digital retail experiences through lifelike engagement and intelligent support.",
+    useCaseDesc: "An interactive 3D retail space that transforms digital commerce through lifelike engagement and intelligent support. Realistic product simulations and AI-driven interactions enhance product visibility, streamline decision-making, and strengthen customer connection—delivering measurable impact across sales, experience, and brand perception.",
     useCaseVideo: "/video/3",
     // features: [
     //   {
@@ -465,7 +465,7 @@ const cards = [
     id: 4,
     page: "2",
     title: "Customer Engagement",
-    text: "Digitally reimagined customer touchpoints delivered through interactive 3D platforms, including virtual experience stores, AI-enabled service centers, and multi-brand shopping malls. These environments offer lifelike product interaction, intelligent support, and seamless navigation enhancing engagement, personalizing experiences, and elevating the end-to-end customer journey.",
+    text: "Digitally reimagined customer touchpoints delivered through interactive 3D platforms. These lifelike experiences offer AI-enabled intelligent support, impactful product demonstrations, and intuitive navigation—personalizing interactions and driving deeper engagement, boosting customer satisfaction, retention, and brand connection across every stage of the customer journey.",
     image: swiper401,
     images: [
       swiper401,
@@ -485,7 +485,7 @@ const cards = [
       //swiper415,
     ],
     useCase: "Virtual Customer Service Center",
-    useCaseDesc: "A comprehensive 3D support platform reimagined with digital humanoid avatars that guide and assist users through categorized services such as general queries, service appointment booking, installation, and more. Voice-enabled and simulation-driven for intuitive, self-service experiences. Includes tools like store locators and product highlight zones to streamline assistance and engagement. Built to deliver responsive, intelligent support in an immersive virtual setting.",
+    useCaseDesc: "An advanced 3D platform redefining customer support through intelligent, voice-enabled interactions. Digital avatars and simulation-driven experiences improve service efficiency, reduce resolution time, and enhance user satisfaction—strengthening brand trust and operational effectiveness.",
     useCaseVideo: "/video/4",
     // features: [
     //   {
@@ -544,7 +544,7 @@ const cards = [
     id: 6,
     page: "3",
     title: "Employee Experience",
-    text: "Next-generation platforms designed to enrich internal engagement and streamline key HR interactions ranging from dynamic onboarding journeys to internal networking solutions that foster meaningful connections, collaboration, and culture-building across the organization. These immersive environments support a more connected, informed, and engaged workforce while reinforcing organizational values and identity.",
+    text: "Next-generation platforms designed to enrich internal engagement and streamline HR interactions. From dynamic onboarding to immersive networking experiences, the platforms foster meaningful connections, enable seamless collaboration, and strengthen culture across the organization—supporting a more connected, informed, and engaged workforce.",
     image: swiper601,
     images: [
       swiper601,
@@ -558,8 +558,8 @@ const cards = [
       //swiper609,
       //swiper610,
     ],
-    useCase: "HR Onboarding Platform",
-    useCaseDesc: "A reimagined onboarding experience delivered through an interactive 3D environment, guided by digital humanoid avatars. New employees are introduced to company values, policies, and culture through immersive journeys and realistic office space replicas. Includes social hubs and community zones to foster early connection and belonging. Designed to make onboarding engaging, intuitive, and memorable from day one.",
+    useCase: "Reimagined HR Onboarding",
+    useCaseDesc: "A reimagined onboarding platform that delivers an engaging, intuitive, and memorable start from day one. New employees are welcomed and inducted through immersive journeys that introduce company values, policies, and culture in lifelike virtual settings. The experience streamlines key HR processes—from document submissions to progress tracking—ensuring personalization, consistency, and operational efficiency.",
     useCaseVideo: "/video/6",
     // features: [
     //   {
@@ -583,7 +583,7 @@ const cards = [
     id: 7,
     page: "3",
     title: "Employee Experience",
-    text: "Next-generation platforms designed to enrich internal engagement and streamline key HR interactions ranging from dynamic onboarding journeys to internal networking solutions that foster meaningful connections, collaboration, and culture-building across the organization. These immersive environments support a more connected, informed, and engaged workforce while reinforcing organizational values and identity.",
+    text: "Next-generation platforms designed to enrich internal engagement and streamline HR interactions. From dynamic onboarding to immersive networking experiences, the platforms foster meaningful connections, enable seamless collaboration, and strengthen culture across the organization—supporting a more connected, informed, and engaged workforce.",
     image: swiper701,
     images: [
       swiper701,
@@ -592,8 +592,8 @@ const cards = [
       swiper704,
       swiper705,
     ],
-    useCase: "Internal Networking Platform",
-    useCaseDesc: "An internal networking platform designed to foster meaningful connections across teams and departments. Enables employees to connect, chat, and collaborate based on shared interests, roles, or projects. Features intuitive swipe-based UX, smart filters, and personalized suggestions to enhance engagement. Built to strengthen culture, communication, and cross-functional collaboration within the organization.",
+    useCase: "Workplace Connect",
+    useCaseDesc: "A professional networking app designed to enhance internal collaboration, communication, and engagement within organizations. The platform allows employees to create personalized profiles, connect with colleagues based on shared interests and expertise, and participate in company initiatives to strengthen culture, communication, and cross-functional collaboration.",
     useCaseVideo: "/video/7",
     // features: [
     //   {
@@ -617,7 +617,7 @@ const cards = [
     id: 8,
     page: "4",
     title: "Knowledge Management",
-    text: "AI-powered solutions designed to streamline access to information through digital avatars and web-based query interfaces tailored to specific use cases. These platforms enable efficient content retrieval, query resolution, and analysis—supporting faster decision-making, improved productivity, and organizational knowledge retention. Scalable and customizable, they integrate seamlessly into existing ecosystems to address domain-specific knowledge needs. Designed to empower users with precise, context-aware insights in real time.",
+    text: "AI-powered platforms designed to streamline access to information and enable real-time, context-aware insights. Through digital avatars and intuitive query interfaces, they drive faster decision-making, boost productivity, and strengthen knowledge retention. Scalable and customizable, these solutions align with domain-specific needs while integrating seamlessly into existing systems.",
     image: swiper801,
     images: [
       swiper801,
@@ -649,7 +649,7 @@ const cards = [
     id: 9,
     page: "4",
     title: "Knowledge Management",
-    text: "AI-powered solutions designed to streamline access to information through digital avatars and web-based query interfaces tailored to specific use cases. These platforms enable efficient content retrieval, query resolution, and analysis—supporting faster decision-making, improved productivity, and organizational knowledge retention. Scalable and customizable, they integrate seamlessly into existing ecosystems to address domain-specific knowledge needs. Designed to empower users with precise, context-aware insights in real time.",
+    text: "AI-powered platforms designed to streamline access to information and enable real-time, context-aware insights. Through digital avatars and intuitive query interfaces, they drive faster decision-making, boost productivity, and strengthen knowledge retention. Scalable and customizable, these solutions align with domain-specific needs while integrating seamlessly into existing systems.",
     image: swiper901,
     images: [
       swiper901,
@@ -664,8 +664,8 @@ const cards = [
       //swiper910,
     ],
     liveDemoLink: "https://kbl-chat-app.onrender.com/",
-    useCase: "Business Query and Insights Assistant",
-    useCaseDesc: "An interactive 2D web-based assistant modeled on generative AI capabilities, tailored for domain-specific use—such as retail, with flexibility to adapt across industries. Enables users to chat about products, analyze reports, access insights, and explore data through intuitive conversations. Features include smart query suggestions, contextual visuals, graph generation, and follow-up interactions. Built for deep customization, knowledge integration, and seamless knowledge capture through saved conversations and downloadable notes.",
+    useCase: "AI-Powered Boardroom Query Assistant Version 2",
+    useCaseDesc: "An Advanced Generative AI-driven solution designed to support leadership interactions with company data. Represented as a conversational solution with a strong brand persona, the Digital Boardroom enables leadership to access real-time insights, notifications, and detailed analytics through natural language interactions integrating seamlessly with multiple data sources, providing a unified platform for data-driven decision-making.",
     useCaseVideo: "/video/9",
     // features: [
     //   {
@@ -689,15 +689,15 @@ const cards = [
     id: 10,
     page: "4",
     title: "Knowledge Management",
-    text: "AI-powered solutions designed to streamline access to information through digital avatars and web-based query interfaces tailored to specific use cases. These platforms enable efficient content retrieval, query resolution, and analysis—supporting faster decision-making, improved productivity, and organizational knowledge retention. Scalable and customizable, they integrate seamlessly into existing ecosystems to address domain-specific knowledge needs. Designed to empower users with precise, context-aware insights in real time.",
+    text: "AI-powered platforms designed to streamline access to information and enable real-time, context-aware insights. Through digital avatars and intuitive query interfaces, they drive faster decision-making, boost productivity, and strengthen knowledge retention. Scalable and customizable, these solutions align with domain-specific needs while integrating seamlessly into existing systems.",
     image: swiper1001,
     images: [
       swiper1001,
       swiper1002,
       swiper1003,
     ],
-    useCase: "AI-Powered Parliamentary Query Assistant",
-    useCaseDesc: "A specialized AI platform featuring a digital avatar embedded with generative AI, trained on organization-specific data. Designed to retrieve, analyze, and respond to parliamentary questions with accuracy and speed. Provides detailed, reference-backed answers to support transparency, compliance, and informed decision-making. Tailored for high-stakes information environments where precision and credibility are critical.",
+    useCase: "AI-Powered Boardroom Query Assistant Version 1",
+    useCaseDesc: "A specialized AI platform powered by an interactive bot with a distinct brand persona trained on organization-specific data. Built to retrieve, analyze, and respond to parliamentary questions with speed and precision, it delivers detailed, reference-backed answers—enhancing transparency, ensuring compliance, and supporting informed decision-making at scale.",
     useCaseVideo: "/video/10",
     // features: [
     //   {
@@ -721,7 +721,7 @@ const cards = [
     id: 11,
     page: "4",
     title: "Knowledge Management",
-    text: "AI-powered solutions designed to streamline access to information through digital avatars and web-based query interfaces tailored to specific use cases. These platforms enable efficient content retrieval, query resolution, and analysis—supporting faster decision-making, improved productivity, and organizational knowledge retention. Scalable and customizable, they integrate seamlessly into existing ecosystems to address domain-specific knowledge needs. Designed to empower users with precise, context-aware insights in real time.",
+    text: "AI-powered platforms designed to streamline access to information and enable real-time, context-aware insights. Through digital avatars and intuitive query interfaces, they drive faster decision-making, boost productivity, and strengthen knowledge retention. Scalable and customizable, these solutions align with domain-specific needs while integrating seamlessly into existing systems.",
     image: swiper1101,
     images: [
       swiper1101,
@@ -731,8 +731,8 @@ const cards = [
       swiper1105,
       swiper1106,
     ],
-    useCase: "Realistic 3D AI Assistant ",
-    useCaseDesc: "A visually rich 3D environment featuring a high-fidelity humanoid avatar powered by generative AI and tailored organizational data. Responds with natural animations, expressions, and gestures to deliver information in an engaging, intuitive manner. Designed to enhance user interaction with a balance of realism, intelligence, and immersive communication.",
+    useCase: "Virtual FrontDesk",
+    useCaseDesc: "A visually rich 3D interface powered by a conversational humanoid avatar. Designed to greet, guide, and assist with real-time queries, the platform delivers responsive, brand-aligned interactions—enhancing first-touch engagement, improving service efficiency, and reinforcing a consistent organizational presence.",
     useCaseVideo: "/video/11",
     // features: [
     //   {
@@ -756,7 +756,7 @@ const cards = [
     id: 12,
     page: "5",
     title: "Learning and Development",
-    text: "Advanced simulation-based learning ecosystems that deliver immersive, guided learning experiences through 3D environments, VR applications, and AI-powered digital interfaces. Designed to support technical training, system familiarization, and real-time knowledge access, these solutions enable hands-on, self-paced learning across diverse roles and functions. Scalable and interactive, they help accelerate skill development, reinforce retention, and elevate training effectiveness in dynamic, high-impact formats.",
+    text: "Advanced simulation-based learning ecosystems that deliver immersive and guided experiences. These solutions support technical training, system familiarization, and real-time knowledge access—enabling hands-on, self-paced learning across roles. Scalable and interactive, they accelerate skill development, boost retention, and drive measurable impact on workforce capability.",
     image: swiper1201,
     images: [
       swiper1201,
@@ -769,8 +769,8 @@ const cards = [
       //swiper1208,
       //swiper1209,
     ],
-    useCase: "VR-Based Industrial Training Simulator",
-    useCaseDesc: "A web-based learning solution offering step-by-step guided exploration of complex systems such as solar and wind farms through interactive 3D modules. Users can assemble components, experience real-time environmental simulations, and understand operational workflows in a hands-on format. Integrated AI chatbots provide contextual assistance and curated content, while digital twin integration enables real-time learning and scenario-based insights. Designed to enhance system familiarization through active, experiential learning.",
+    useCase: "Industrial Operations Training",
+    useCaseDesc: "A high-fidelity, 3D training solution built to the scale of real-world industrial assets and powered by real-time imagery. Designed for safety and technical training, it delivers lifelike, scenario-based learning experiences that mirror physical operations—enhancing situational awareness, procedural accuracy, and workforce preparedness.",
     useCaseVideo: "/video/12",
     // features: [
     //   {
@@ -794,7 +794,7 @@ const cards = [
     id: 13,
     page: "5",
     title: "Learning and Development",
-    text: "Advanced simulation-based learning ecosystems that deliver immersive, guided learning experiences through 3D environments, VR applications, and AI-powered digital interfaces. Designed to support technical training, system familiarization, and real-time knowledge access, these solutions enable hands-on, self-paced learning across diverse roles and functions. Scalable and interactive, they help accelerate skill development, reinforce retention, and elevate training effectiveness in dynamic, high-impact formats.",
+    text: "Advanced simulation-based learning ecosystems that deliver immersive and guided experiences. These solutions support technical training, system familiarization, and real-time knowledge access—enabling hands-on, self-paced learning across roles. Scalable and interactive, they accelerate skill development, boost retention, and drive measurable impact on workforce capability.",
     image: swiper1301,
     images: [
       swiper1301,
@@ -813,8 +813,8 @@ const cards = [
       //swiper1314,
     ],
     liveDemoLink: "https://relearn-067n.onrender.com/",
-    useCase: "Interactive Learning Explorer Platform",
-    useCaseDesc: "A web-based learning solution offering step-by-step guided exploration of complex systems such as solar and wind farms through interactive 3D modules. Users can assemble components, experience real-time environmental simulations, and understand operational workflows in a hands-on format. Integrated AI chatbots provide contextual assistance and curated content, while digital twin integration enables real-time learning and scenario-based insights. Designed to enhance system familiarization through active, experiential learning.",
+    useCase: "Immersive Learning Grid",
+    useCaseDesc: "An interactive 3D platform designed to equip new joiners with technical training through immersive, industry-specific simulations. Modeled around energy infrastructure such as solar and wind plants, it integrates real-time query support and operations training via digital twin modules—enhancing workforce readiness, operational familiarity, and hands-on learning in high-impact scenarios.",
     useCaseVideo: "/video/13",
     // features: [
     //   {
