@@ -68,8 +68,14 @@ function Swiper() {
         <span className="arrow"><FaArrowLeftLong /></span>
         <span className="text">Explore other focus areas</span>
       </Link>
-      <button className="nav-button nav-button--left" onClick={prevCard}>&#10094;</button>
-      <button className="nav-button nav-button--right" onClick={nextCard}>&#10095;</button>
+
+      {/* Conditionally hide prev/next when only 2 cards */}
+      {!(n === 2 && currentIndex === 0) && (
+        <button className="nav-button nav-button--left" onClick={prevCard}>&#10094;</button>
+      )}
+      {!(n === 2 && currentIndex === 1) && (
+        <button className="nav-button nav-button--right" onClick={nextCard}>&#10095;</button>
+      )}
 
       <div className="cards-container">
         {cardsToShow.map((card, index) => {
