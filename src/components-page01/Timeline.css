@@ -237,7 +237,7 @@ body.innovation-page {
     opacity: 1;
   }
   to {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
     opacity: 0;
   }
 }
@@ -382,46 +382,44 @@ body.innovation-page {
   top: 5%;
   list-style: none;
   padding: 0;
-  margin: 0 3.6vw;
+  margin: 0 2.8vw;
   display: flex;
   flex-direction: column;
   gap: 1.5vh;
   /* Default visible state */
   opacity: 1;
-  transform: translateX(20px);
-}
-
-/* New animation classes for projects-list */
-.projects-list.enter {
-  animation: slideInFromRight 0.6s ease-in-out forwards;
-}
-
-.projects-list.exit {
-  animation: slideOutToLeft 0.6s ease-in-out forwards;
+  /* transform: translateX(20px); */
+  transform: none; /* was translateX(20px) */
+  will-change: transform, opacity; /* added for smoother animation */
 }
 
 /* New keyframes for projects-list animations */
 @keyframes slideInFromRight {
   from {
-    transform: translateX(10px);
-    opacity: 0;
+    transform: translateX(40px); opacity: 0;
   }
   to {
-    transform: translateX(20px);
-    opacity: 1;
+    transform: translateX(0);   opacity: 1; 
   }
 }
 
 @keyframes slideOutToLeft {
   from {
-    transform: translateX(20px);
-    opacity: 1;
+    transform: translateX(0);   opacity: 1;
   }
   to {
-    transform: translateX(-80px);
-    opacity: 0;
+    transform: translateX(-100%); opacity: 0; 
   }
 }
+
+.projects-list.enter {
+  animation: slideInFromRight 1s ease-in-out forwards;
+}
+
+.projects-list.exit {
+  animation: slideOutToLeft  1s ease-in-out forwards;
+}
+
 
 .project-card {
   /* width: 16.875rem; */
@@ -460,7 +458,7 @@ body.innovation-page {
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 8px 12px;
+  padding: 4px 8px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
   color: white;
   font-size: 0.75vw;
