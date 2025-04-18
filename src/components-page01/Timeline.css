@@ -242,7 +242,7 @@ body.innovation-page {
   }
 }
 .slide-out-left {
-  animation: slideOutLeft 2.5s ease-in-out forwards;
+  animation: slideOutLeft 1.5s ease-in-out forwards;
 }
 
 @keyframes slideInRight {
@@ -271,7 +271,7 @@ body.innovation-page {
   }
 }
 .slide-out-right {
-  animation: slideOutRight 2.5s ease-in-out forwards;
+  animation: slideOutRight 1.5s ease-in-out forwards;
 }
 
 @keyframes slideInLeft {
