@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./Timeline.css";
 import swirlVideo from "../assets/BGVideo.mp4";
 import stepsData from "../variablefiles/stepsData.jsx";
-import RollingSlider from "../background/RollingSlider.js";
 
 export default function Timeline() {
   // Parse query parameters for an activeStep value
@@ -20,19 +19,45 @@ export default function Timeline() {
     if (idx !== -1) initialStep = idx;
   }
 
+  // Main step state
   const [currentStep, setCurrentStep] = useState(initialStep);
   const [prevStep, setPrevStep] = useState(initialStep);
   const [direction, setDirection] = useState(1); // 1 = next, -1 = prev
   const [animating, setAnimating] = useState(false);
 
-  // Change step with animation (only via clicks)
+  // Projects-list step state (lags behind currentStep for transitions)
+  const [projectsStep, setProjectsStep] = useState(initialStep);
+  const [isProjectsExiting, setIsProjectsExiting] = useState(false);
+  const [isProjectsEntering, setIsProjectsEntering] = useState(false);
+
+  // Change step with coordinated animations
   const changeStep = (newStep, newDirection) => {
     if (newStep === currentStep) return;
+    // Left/center animation
     setDirection(newDirection);
     setPrevStep(currentStep);
     setCurrentStep(newStep);
     setAnimating(true);
-    setTimeout(() => setAnimating(false), 2000);
+    // Projects exit animation
+    setIsProjectsExiting(true);
+
+    // After exit duration, swap in new projects and enter
+    const exitDuration = 600; // ms, matches CSS
+    const enterDuration = 600;
+    setTimeout(() => {
+      setIsProjectsExiting(false);
+      setProjectsStep(newStep);
+      setIsProjectsEntering(true);
+      // Clear entering flag after enter animation
+      setTimeout(() => {
+        setIsProjectsEntering(false);
+      }, enterDuration);
+    }, exitDuration);
+
+    // Clear main animating flag after full cycle (optional)
+    setTimeout(() => {
+      setAnimating(false);
+    }, 2000);
   };
 
   const handleNext = () => {
@@ -44,18 +69,6 @@ export default function Timeline() {
     changeStep(prev, -1);
   };
 
-  // Animate projects list on step change
-  useEffect(() => {
-    const projectsList = document.querySelector(".projects-list");
-    if (!projectsList) return;
-    projectsList.classList.remove("enter", "exit");
-    projectsList.classList.add("exit");
-    setTimeout(() => {
-      projectsList.classList.remove("exit");
-      projectsList.classList.add("enter");
-    }, 600);
-  }, [currentStep]);
-
   // Set body class for page
   useEffect(() => {
     document.body.className = "innovation-page";
@@ -65,7 +78,6 @@ export default function Timeline() {
   return (
     <div className="innovation-container">
       <div className="main-content">
-
         {/* Left Panel */}
         <div className="left-panel">
           <div className="vertical-title-left">
@@ -168,12 +180,19 @@ export default function Timeline() {
               <span>SOLUTIONS</span>
             </div>
           </div>
-          <ul className="projects-list">
-            {stepsData[currentStep].projects.map((project) => (
+
+          {/* Projects List with exit/enter animations */}
+          <ul
+            className={`projects-list ${
+              isProjectsExiting ? "exit" : 
+              isProjectsEntering ? "enter" : ""
+            }`}
+          >
+            {stepsData[projectsStep].projects.map((project) => (
               <li key={project.id} className="project-card">
                 <div className="project-thumbnail-wrapper">
                   <Link
-                    to={`/swiper/${stepsData[currentStep].id}?activeStep=${project.id}`}
+                    to={`/swiper/${stepsData[projectsStep].id}?activeStep=${project.id}`}
                   >
                     <img
                       src={project.image}
@@ -188,6 +207,7 @@ export default function Timeline() {
               </li>
             ))}
           </ul>
+
           <Link to={stepsData[currentStep].href}>
             <button className="explore-more-btn">Explore More</button>
           </Link>
