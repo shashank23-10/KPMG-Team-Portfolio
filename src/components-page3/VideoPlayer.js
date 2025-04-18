@@ -82,9 +82,18 @@ const sliderStyle = duration > 0
     background: `white`
 };
 
+// percentage 0–100
 const volumePercentage = volume * 100;
+
+// always draw a gradient: white up to the filled %; off‑white thereafter
 const volumeSliderStyle = {
-    background: `linear-gradient(90deg, #003087 0%, #003087 ${volumePercentage}%, #ccc ${volumePercentage}%, #ccc 100%)`,
+  background: `linear-gradient(
+    90deg,
+    white 0%,
+    white ${volumePercentage}%,
+    #8f8b81 ${volumePercentage}%,
+    #8f8b81 100%
+  )`
 };
 
 const handlePlay = () => {
