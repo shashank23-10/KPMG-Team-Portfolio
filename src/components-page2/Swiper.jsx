@@ -49,12 +49,30 @@ function Swiper() {
     return diff;
   };
 
+  const [isChanging, setIsChanging] = useState(false);
+  const [canHover, setCanHover] = useState(true);
+
+
   const prevCard = () => {
-    setCurrentIndex(currentIndex === 0 ? n - 1 : currentIndex - 1);
+    if (isChanging) return; // prevent re-triggering
+    setIsChanging(true);
+    setCanHover(false);
+    setTimeout(() => {
+      setCurrentIndex(currentIndex === 0 ? n - 1 : currentIndex - 1);
+      setIsChanging(false);
+      setCanHover(true); // Re-enable hover after transition
+    }, 250); // 250ms delay
   };
 
   const nextCard = () => {
-    setCurrentIndex(currentIndex === n - 1 ? 0 : currentIndex + 1);
+    if (isChanging) return;
+    setIsChanging(true);
+    setCanHover(false);
+    setTimeout(() => {
+      setCurrentIndex(currentIndex === n - 1 ? 0 : currentIndex + 1);
+      setIsChanging(false);
+      setCanHover(true); // Re-enable hover after transition
+    }, 250); // 250ms delay
   };
 
   useEffect(() => {
@@ -95,10 +113,20 @@ function Swiper() {
                 '--offset': offset,
                 transition: 'transform 0.7s ease-in-out, opacity 0.7s ease-in-out',
               }}
-              onMouseEnter={offset === 0 ? () => { setIsHovered(true); setHasHovered(true); } : undefined}
-              onMouseLeave={offset === 0 ? () => setIsHovered(false) : undefined}
+              onMouseEnter={
+                offset === 0 && canHover
+                  ? () => {
+                      setIsHovered(true);
+                      setHasHovered(true);
+                    }
+                  : undefined
+              }
+              
+              onMouseLeave={
+                offset === 0 ? () => setIsHovered(false) : undefined
+              }              
             >
-              <img src={imgSrc} alt={card.title} className={imgClass} />
+              <img src={imgSrc} alt={card.title} className={imgClass}/>
               <div className="feature-image-title">
                 <span className="feature-image-text">{card.useCase}</span>
               </div>
